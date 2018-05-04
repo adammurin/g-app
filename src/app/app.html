@@ -1,15 +1,24 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <a menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <img alt="{{p.title}}" height="20" src="assets/imgs/icons/nav/{{p.icon}}">
         {{p.title}}
-      </button>
+      </a>
+    </ion-list>
+    <ion-list class="bottomPos">
+      <div *ngFor="let l of links">
+        <a ion-item href="{{l.link}}" target="_blank">
+          <img alt="{{l.title}}" height="20" src="assets/imgs/icons/{{l.icon}}">
+          {{l.title}}
+        </a>
+      </div>
     </ion-list>
   </ion-content>
 

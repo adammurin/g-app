@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Výpočet spotreby materiálu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding-top>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let vypocet of vypocty" (click)="viewItem(vypocet)" col-6>
+      <div class="cover-image" [style.background-image]="'url(/assets/imgs/' + vypocet.hlavny_obrazok + ')'">
+      <h2 class="title">{{vypocet.nazov}}</h2>
+      </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

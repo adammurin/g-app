@@ -14,3 +14,95 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.logo{
+    padding: 6px 0 2px;
+}
+
+.fadedText {
+    color: #999;
+}
+
+.show-menu {
+    .fixed-content {
+        background: map-get($colors, primary);
+    }
+    .item-md {
+        background: map-get($colors, primary);
+        color: #fff;
+        .item-inner {
+            border: none;
+            img {
+                margin: 4px 8px -4px 0;
+                box-sizing: border-box;
+            }
+        }
+        .label-md {
+            margin: 11px 8px 11px 0;
+        }
+    }
+    .logo {
+        padding: 6px 10px 2px;
+    }
+}
+
+.toolbar-background {
+    background-color: map-get($colors, primary);
+}
+
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .toolbar-title-md {
+	color: #fff;
+}
+
+.cover-image {
+    position: relative;
+    min-height: 170px;
+    width: 100%;
+    background: none no-repeat center center transparent;
+    background-size: cover;
+    border-radius: 2px;
+  .title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+   	background: #fff;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6));
+    font-size: 1.1em;
+    font-weight: normal;
+    text-align: left;
+    margin-bottom: 0;
+    padding: 10px 15px;
+  }
+
+}
+
+.slide-zoom {
+}
+
+.slide-title {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 25px 45px;
+    margin-bottom: 0;
+    background: #fff;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); /* Standard syntax (must be last) */
+}
+
+form {
+	.label.afterInput {
+		float: right;
+	    width: 30px;
+	    position: absolute;
+	    right: 0;
+	    bottom: -5px;
+	}
+}
+
+.bottomPos {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

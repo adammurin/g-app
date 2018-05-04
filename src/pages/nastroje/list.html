@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nástroje</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding-top>
+  <ion-grid>
+    <ion-row>
+      <ion-col (click)="viewMeter()" col-6>
+        <img src="/assets/imgs/nastroje/meter.png">
+        <h2 class="title">Meter, baterka, vodováha</h2>
+      </ion-col>
+      <ion-col (click)="viewPrevodnik()" col-6>
+        <img src="/assets/imgs/nastroje/prevodnik.png">
+        <h2 class="title">Prevodník jednotiek</h2>
+      </ion-col>
+      <ion-col (click)="viewVzdialenost()" col-6>
+        <img src="/assets/imgs/nastroje/vzdialenost.png">
+        <h2 class="title">Meranie vzdialenosti</h2>
+      </ion-col>
+      <ion-col (click)="viewQr()" col-6>
+        <img src="/assets/imgs/nastroje/qr.png">
+        <h2 class="title">Čítačka QR kódov</h2>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

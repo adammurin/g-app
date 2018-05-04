@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{nazov}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-card *ngIf="showResults == false">
+    <ion-card-header>
+      Výpočet
+    </ion-card-header>
+      <ion-card-content>
+        <form *ngIf=" calculation_type == 1 " [formGroup]="formOne" (ngSubmit)="logForm()">
+          <div >
+            <ion-item>
+              <ion-label stacked>Zadajte plochu stropu</ion-label>
+              <ion-input type="text" formControlName="area" placeholder="" [(ngModel)]="shadowArea" (input)="clearInputs()"></ion-input><ion-label class="afterInput">m<sup>2</sup></ion-label>
+            </ion-item>
+            <h3>alebo</h3>
+            <ion-item>
+              <ion-label stacked>Dĺžka</ion-label>
+              <ion-input type="number" formControlName="width" [(ngModel)]="width" (input)="calcArea($event.target.value)"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label stacked>Šírka</ion-label>
+              <ion-input type="number" formControlName="height" [(ngModel)]="height" (input)="calcArea($event.target.value)"></ion-input>
+            </ion-item>
+            
+            <button ion-button type="submit" [disabled]="!formOne.valid">Submit</button>
+          </div>
+        </form>
+
+        <form *ngIf=" calculation_type == 2 " [formGroup]="formTwo" (ngSubmit)="logForm()">
+          <ion-item>
+            <ion-label stacked>Dĺžka</ion-label>
+            <ion-input type="text" formControlName="width"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>Šírka</ion-label>
+            <ion-input type="text" formControlName="height"></ion-input>
+          </ion-item>
+          
+          <button ion-button type="submit" [disabled]="!formTwo.valid">Submit</button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="showResults == true">
+      <ion-card-header>
+        Výpočet
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="fadedText">
+              Na {{this.shadowArea}} m<sup>2</sup> budete potrebovať
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let result of results">
+            <ion-col col-9>
+              {{result.name}}
+            </ion-col>
+            <ion-col col-3>
+              {{result.value}} <span [innerHTML]="result.unit"></span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+  </ion-card>
+</ion-content>
