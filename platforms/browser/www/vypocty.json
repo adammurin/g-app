@@ -1,0 +1,35 @@
+[
+  {
+    "created_at": "2018-03-10 14:58:25",
+    "calculation_type": "1",
+    "hlavny_obrazok": "pracovne-postupy/strop-s-jednoduchou-konstrukciou/strop-s-jednoduchou-konstrukciou.jpg",
+    "id": 1,
+    "nazov": "Strop s jednoduchou konštrukciou",
+    "publikovane": 1,
+    "slug": "strop-s-jednoduchou-konstrukciou",
+    "text": "Sadrokartonový strop s jednoduchou konštrukciou.",
+    "updated_at": "2018-03-10 14:58:25"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "1",
+    "hlavny_obrazok": "pracovne-postupy/strop-s-dvojitou-konstrukciou/strop-s-dvojitou-konstrukciou.jpg",
+    "id": 2,
+    "nazov": "Strop s dvojitou konštrukciou",
+    "publikovane": 1,
+    "slug": "strop-s-dvojitou-konstrukciou",
+    "text": "Sadrokartonový strop s dvojitou konštrukciou",
+    "updated_at": "2018-03-10 15:04:54"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "1",
+    "hlavny_obrazok": "pracovne-postupy/sadrokartonove-podkrovie/sadrokartonove-podkrovie.jpg",
+    "id": 3,
+    "nazov": "Sadrokartónové podkrovie",
+    "publikovane": 1,
+    "slug": "sadrokartonove-podkrovie",
+    "text": "Sadrokartónové podkrovie",
+    "updated_at": "2018-03-10 15:04:54"
+  }
+]
