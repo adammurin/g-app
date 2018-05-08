@@ -24,6 +24,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { Flashlight } from '@ionic-native/flashlight';
+import { File } from '@ionic-native/file';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { Flashlight } from '@ionic-native/flashlight';
     SplashScreen,
     QRScanner,
     Flashlight,
+    File,
+    FileTransfer,
     HttpClientModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
