@@ -11,7 +11,7 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let postup of postupy" (click)="viewItem(postup)" col-6>
-      <div class="cover-image" [style.background-image]="'url(/assets/imgs/' + postup.hlavny_obrazok + ')'">
+      <div class="cover-image" [style.background-image]="'url(./assets/imgs/' + postup.hlavny_obrazok + ')'">
       <h2 class="title">{{postup.nazov}}</h2>
       </div>
       </ion-col>

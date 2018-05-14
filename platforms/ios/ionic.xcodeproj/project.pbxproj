@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1271AF2D010146C8B3D806F8 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B98DF31C4B4EFCBFB19630 /* CDVAssetLibraryFilesystem.m */; };
@@ -129,6 +128,9 @@
 		FBDBCD0C20A045350085E75D /* ionicons.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = FBDBCCB920A045340085E75D /* ionicons.woff2 */; };
 		FBDBCD0D20A045350085E75D /* ionicons.scss in Resources */ = {isa = PBXBuildFile; fileRef = FBDBCCBA20A045340085E75D /* ionicons.scss */; };
 		FCBD9695FC624ED7A5535430 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = A37CD047A1164F85BB8B3F58 /* CDVViewController+SplashScreen.m */; };
+		2C2233E8FA944554BAF670E4 /* CDVBarcodeScanner.mm in Resources */ = {isa = PBXBuildFile; fileRef = E81E07CB2B054789867CA252 /* CDVBarcodeScanner.mm */; };
+		FACC72D264B540418B23ABF4 /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D223C4DDF94D1D8FD2B6B7 /* scannerOverlay.xib */; };
+		E84A531996A04D16B390659E /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D002D7C102148519F289BDA /* CDVBarcodeScanner.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,6 +324,9 @@
 		FBDBCCB820A045340085E75D /* roboto-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "roboto-bold.ttf"; sourceTree = "<group>"; };
 		FBDBCCB920A045340085E75D /* ionicons.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.woff2; sourceTree = "<group>"; };
 		FBDBCCBA20A045340085E75D /* ionicons.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ionicons.scss; sourceTree = "<group>"; };
+		E81E07CB2B054789867CA252 /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.mm"; path = "phonegap-plugin-barcodescanner/CDVBarcodeScanner.mm"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		62D223C4DDF94D1D8FD2B6B7 /* scannerOverlay.xib */ = {isa = PBXFileReference; name = "scannerOverlay.xib"; path = "scannerOverlay.xib"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = file.xib; explicitFileType = undefined; includeInIndex = 0; };
+		2D002D7C102148519F289BDA /* CDVBarcodeScanner.bundle */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.bundle"; path = "CDVBarcodeScanner.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +400,8 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* ionic-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
+				62D223C4DDF94D1D8FD2B6B7 /* scannerOverlay.xib */,
+				2D002D7C102148519F289BDA /* CDVBarcodeScanner.bundle */,
 			);
 			name = Resources;
 			path = ionic/Resources;
@@ -492,6 +499,7 @@
 				080534E74DDC4C25986B2C64 /* CDVAssetLibraryFilesystem.h */,
 				69B0584FF00E427297E78099 /* CDVFileTransfer.m */,
 				2C5B2F62D2AE440BADD5EF63 /* CDVFileTransfer.h */,
+				E81E07CB2B054789867CA252 /* CDVBarcodeScanner.mm */,
 			);
 			name = Plugins;
 			path = ionic/Plugins;
@@ -850,6 +858,8 @@
 				FBDBCCCD20A045350085E75D /* ic_logo_white_long.png in Resources */,
 				FBDBCCF720A045350085E75D /* roboto-light.woff2 in Resources */,
 				FBDBCCBD20A045340085E75D /* ic_torch_on.png in Resources */,
+				FACC72D264B540418B23ABF4 /* scannerOverlay.xib in Resources */,
+				E84A531996A04D16B390659E /* CDVBarcodeScanner.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +921,7 @@
 				654D2363ABDE45FD9E7CF215 /* CDVLocalFilesystem.m in Sources */,
 				1271AF2D010146C8B3D806F8 /* CDVAssetLibraryFilesystem.m in Sources */,
 				7D6F1C571D83427FAE0E0585 /* CDVFileTransfer.m in Sources */,
+				2C2233E8FA944554BAF670E4 /* CDVBarcodeScanner.mm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

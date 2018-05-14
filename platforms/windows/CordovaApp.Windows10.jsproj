@@ -91,4 +91,22 @@
     <ItemGroup>
         <ProjectReference Include="..\..\plugins\cordova-sqlite-storage\src\windows\SQLite3-Win-RT\SQLite3\SQLite3.UWP\SQLite3.UWP.vcxproj" />
     </ItemGroup>
+    <ItemGroup>
+        <Reference Condition="'$(Platform)'=='x86'" Include="ZXing">
+            <HintPath>plugins/phonegap-plugin-barcodescanner/x86/ZXing.winmd</HintPath>
+            <IsWinMDFile>true</IsWinMDFile>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Condition="'$(Platform)'=='x64'" Include="ZXing">
+            <HintPath>plugins/phonegap-plugin-barcodescanner/x64/ZXing.winmd</HintPath>
+            <IsWinMDFile>true</IsWinMDFile>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Condition="'$(Platform)'=='ARM'" Include="ZXing">
+            <HintPath>plugins/phonegap-plugin-barcodescanner/ARM/ZXing.winmd</HintPath>
+            <IsWinMDFile>true</IsWinMDFile>
+        </Reference>
+    </ItemGroup>
 </Project>

@@ -17,12 +17,12 @@ import { VzdialenostDetailPage } from '../pages/vzdialenost-detail/item';
 import { QrDetailPage } from '../pages/qr-detail/item';
 import { PredajnaPage } from '../pages/predajna/item';
 
-
 import { BackgroundImageDirective } from '../directives/background-image/background-image';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Flashlight } from '@ionic-native/flashlight';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
@@ -69,6 +69,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
     StatusBar,
     SplashScreen,
     QRScanner,
+    BarcodeScanner,
     Flashlight,
     File,
     FileTransfer,

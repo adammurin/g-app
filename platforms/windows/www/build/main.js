@@ -36,7 +36,7 @@ var PostupyDetailPage = (function () {
     };
     PostupyDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-postupy-detail',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\postupy-detail\postupy-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-slides pager>\n\n    <ion-slide *ngFor="let slide of slides">\n      <img src="/assets/imgs/{{slide.image}}">\n      <p class="slide-title">{{slide.text}}</p>\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\postupy-detail\postupy-detail.html"*/,
+            selector: 'page-postupy-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy-detail/postupy-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-slides pager>\n\n    <ion-slide *ngFor="let slide of slides">\n      <img src="./assets/imgs/{{slide.image}}">\n      <p class="slide-title">{{slide.text}}</p>\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy-detail/postupy-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], PostupyDetailPage);
@@ -199,7 +199,7 @@ var VypoctyDetailPage = (function () {
     };
     VypoctyDetailPage = VypoctyDetailPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-vypocty-detail',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\vypocty-detail\vypocty-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-card *ngIf="showResults == false">\n    <ion-card-header>\n      Výpočet\n    </ion-card-header>\n      <ion-card-content>\n        <form *ngIf=" calculation_type == 1 " [formGroup]="formOne" (ngSubmit)="logForm()">\n          <div >\n            <ion-item>\n              <ion-label stacked>Zadajte plochu stropu</ion-label>\n              <ion-input type="text" formControlName="area" placeholder="" [(ngModel)]="shadowArea" (input)="clearInputs()"></ion-input><ion-label class="afterInput">m<sup>2</sup></ion-label>\n            </ion-item>\n            <h3>alebo</h3>\n            <ion-item>\n              <ion-label stacked>Dĺžka</ion-label>\n              <ion-input type="number" formControlName="width" [(ngModel)]="width" (input)="calcArea($event.target.value)"></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label stacked>Šírka</ion-label>\n              <ion-input type="number" formControlName="height" [(ngModel)]="height" (input)="calcArea($event.target.value)"></ion-input>\n            </ion-item>\n            \n            <button ion-button type="submit" [disabled]="!formOne.valid">Submit</button>\n          </div>\n        </form>\n\n        <form *ngIf=" calculation_type == 2 " [formGroup]="formTwo" (ngSubmit)="logForm()">\n          <ion-item>\n            <ion-label stacked>Dĺžka</ion-label>\n            <ion-input type="text" formControlName="width"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label stacked>Šírka</ion-label>\n            <ion-input type="text" formControlName="height"></ion-input>\n          </ion-item>\n          \n          <button ion-button type="submit" [disabled]="!formTwo.valid">Submit</button>\n        </form>\n      </ion-card-content>\n    </ion-card>\n    <ion-card *ngIf="showResults == true">\n      <ion-card-header>\n        Výpočet\n      </ion-card-header>\n      <ion-card-content>\n        <ion-grid>\n          <ion-row>\n            <ion-col class="fadedText">\n              Na {{this.shadowArea}} m<sup>2</sup> budete potrebovať\n            </ion-col>\n          </ion-row>\n          <ion-row *ngFor="let result of results">\n            <ion-col col-9>\n              {{result.name}}\n            </ion-col>\n            <ion-col col-3>\n              {{result.value}} <span [innerHTML]="result.unit"></span>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-card-content>\n  </ion-card>\n</ion-content>'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\vypocty-detail\vypocty-detail.html"*/,
+            selector: 'page-vypocty-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty-detail/vypocty-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-card *ngIf="showResults == false">\n    <ion-card-header>\n      Výpočet\n    </ion-card-header>\n      <ion-card-content>\n        <form *ngIf=" calculation_type == 1 " [formGroup]="formOne" (ngSubmit)="logForm()">\n          <div >\n            <ion-item>\n              <ion-label stacked>Zadajte plochu stropu</ion-label>\n              <ion-input type="text" formControlName="area" placeholder="" [(ngModel)]="shadowArea" (input)="clearInputs()"></ion-input><ion-label class="afterInput">m<sup>2</sup></ion-label>\n            </ion-item>\n            <h3>alebo</h3>\n            <ion-item>\n              <ion-label stacked>Dĺžka</ion-label>\n              <ion-input type="number" formControlName="width" [(ngModel)]="width" (input)="calcArea($event.target.value)"></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label stacked>Šírka</ion-label>\n              <ion-input type="number" formControlName="height" [(ngModel)]="height" (input)="calcArea($event.target.value)"></ion-input>\n            </ion-item>\n            \n            <button ion-button type="submit" [disabled]="!formOne.valid">Submit</button>\n          </div>\n        </form>\n\n        <form *ngIf=" calculation_type == 2 " [formGroup]="formTwo" (ngSubmit)="logForm()">\n          <ion-item>\n            <ion-label stacked>Dĺžka</ion-label>\n            <ion-input type="text" formControlName="width"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label stacked>Šírka</ion-label>\n            <ion-input type="text" formControlName="height"></ion-input>\n          </ion-item>\n          \n          <button ion-button type="submit" [disabled]="!formTwo.valid">Submit</button>\n        </form>\n      </ion-card-content>\n    </ion-card>\n    <ion-card *ngIf="showResults == true">\n      <ion-card-header>\n        Výpočet\n      </ion-card-header>\n      <ion-card-content>\n        <ion-grid>\n          <ion-row>\n            <ion-col class="fadedText">\n              Na {{this.shadowArea}} m<sup>2</sup> budete potrebovať\n            </ion-col>\n          </ion-row>\n          <ion-row *ngFor="let result of results">\n            <ion-col col-9>\n              {{result.name}}\n            </ion-col>\n            <ion-col col-3>\n              {{result.value}} <span [innerHTML]="result.unit"></span>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-card-content>\n  </ion-card>\n</ion-content>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty-detail/vypocty-detail.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_3__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
@@ -234,15 +234,15 @@ webpackEmptyAsyncContext.id = 116;
 
 var map = {
 	"../pages/nastroje-detail/item.module": [
-		294,
+		296,
 		2
 	],
 	"../pages/postupy-detail/postupy-detail.module": [
-		295,
+		297,
 		1
 	],
 	"../pages/vypocty-detail/vypocty-detail.module": [
-		296,
+		298,
 		0
 	]
 };
@@ -290,7 +290,7 @@ var VypoctyService = (function () {
     function VypoctyService(http) {
         this.http = http;
         //apiUrl = 'http://127.0.0.1:8000';
-        this.apiUrl = '../../vypocty.json';
+        this.apiUrl = './assets/json/vypocty.json';
         //console.log('Hello PostupyService Provider');
     }
     VypoctyService.prototype.getVypocty = function () {
@@ -338,7 +338,7 @@ var HomePage = (function () {
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n\n\n\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], HomePage);
@@ -407,7 +407,7 @@ var VypoctyPage = (function () {
     };
     VypoctyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-vypocty',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\vypocty\list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Výpočet spotreby materiálu</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col *ngFor="let vypocet of vypocty" (click)="viewItem(vypocet)" col-6>\n      <div class="cover-image" [style.background-image]="\'url(/assets/imgs/\' + vypocet.hlavny_obrazok + \')\'">\n      <h2 class="title">{{vypocet.nazov}}</h2>\n      </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\vypocty\list.html"*/,
+            selector: 'page-vypocty',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Výpočet spotreby materiálu</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col *ngFor="let vypocet of vypocty" (click)="viewItem(vypocet)" col-6>\n      <div class="cover-image" [style.background-image]="\'url(./assets/imgs/\' + vypocet.hlavny_obrazok + \')\'">\n      <h2 class="title">{{vypocet.nazov}}</h2>\n      </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty/list.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]])
@@ -426,8 +426,9 @@ var VypoctyPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostupyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__postupy_detail_postupy_detail__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__ = __webpack_require__(206);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -441,12 +442,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PostupyPage = (function () {
-    function PostupyPage(navCtrl, navParams, postupyService) {
+    function PostupyPage(navCtrl, navParams, postupyService, file) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.postupyService = postupyService;
+        this.file = file;
         this.getPostupy();
+        //this.getData();
     }
     PostupyPage.prototype.getPostupy = function () {
         var _this = this;
@@ -461,12 +465,18 @@ var PostupyPage = (function () {
             postup: postup
         });
     };
+    PostupyPage.prototype.getData = function () {
+        var _this = this;
+        this.file.checkDir(this.file.dataDirectory, 'json')
+            .then(function (_) { return console.log('Directory exists'); })
+            .catch(function (err) { return console.log(_this.file.dataDirectory); });
+    };
     PostupyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-postupy',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\postupy\list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Pracovné postupy</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col *ngFor="let postup of postupy" (click)="viewItem(postup)" col-6>\n      <div class="cover-image" [style.background-image]="\'url(/assets/imgs/\' + postup.hlavny_obrazok + \')\'">\n      <h2 class="title">{{postup.nazov}}</h2>\n      </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\postupy\list.html"*/,
+            selector: 'page-postupy',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Pracovné postupy</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col *ngFor="let postup of postupy" (click)="viewItem(postup)" col-6>\n      <div class="cover-image" [style.background-image]="\'url(./assets/imgs/\' + postup.hlavny_obrazok + \')\'">\n      <h2 class="title">{{postup.nazov}}</h2>\n      </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy/list.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__["a" /* PostupyService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__["a" /* PostupyService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__["a" /* PostupyService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__["a" /* File */]])
     ], PostupyPage);
     return PostupyPage;
 }());
@@ -475,17 +485,17 @@ var PostupyPage = (function () {
 
 /***/ }),
 
-/***/ 206:
+/***/ 207:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NastrojePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__meter_detail_item__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__prevodnik_detail_item__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vzdialenost_detail_item__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__qr_detail_item__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__meter_detail_item__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__prevodnik_detail_item__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vzdialenost_detail_item__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__qr_detail_item__ = __webpack_require__(211);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -520,7 +530,7 @@ var NastrojePage = (function () {
     };
     NastrojePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nastroje',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\nastroje\list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Nástroje</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col (click)="viewMeter()" col-6>\n        <img src="/assets/imgs/nastroje/meter.png">\n        <h2 class="title">Meter, baterka, vodováha</h2>\n      </ion-col>\n      <ion-col (click)="viewPrevodnik()" col-6>\n        <img src="/assets/imgs/nastroje/prevodnik.png">\n        <h2 class="title">Prevodník jednotiek</h2>\n      </ion-col>\n      <ion-col (click)="viewVzdialenost()" col-6>\n        <img src="/assets/imgs/nastroje/vzdialenost.png">\n        <h2 class="title">Meranie vzdialenosti</h2>\n      </ion-col>\n      <ion-col (click)="viewQr()" col-6>\n        <img src="/assets/imgs/nastroje/qr.png">\n        <h2 class="title">Čítačka QR kódov</h2>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\nastroje\list.html"*/
+            selector: 'page-nastroje',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Nástroje</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col (click)="viewMeter()" col-6>\n        <img src="./assets/imgs/nastroje/meter.png">\n        <h2 class="title">Meter, baterka, vodováha</h2>\n      </ion-col>\n      <ion-col (click)="viewPrevodnik()" col-6>\n        <img src="./assets/imgs/nastroje/prevodnik.png">\n        <h2 class="title">Prevodník jednotiek</h2>\n      </ion-col>\n      <ion-col (click)="viewVzdialenost()" col-6>\n        <img src="./assets/imgs/nastroje/vzdialenost.png">\n        <h2 class="title">Meranie vzdialenosti</h2>\n      </ion-col>\n      <ion-col (click)="viewQr()" col-6>\n        <img src="./assets/imgs/nastroje/qr.png">\n        <h2 class="title">Čítačka QR kódov</h2>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje/list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], NastrojePage);
@@ -531,7 +541,7 @@ var NastrojePage = (function () {
 
 /***/ }),
 
-/***/ 207:
+/***/ 208:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -565,7 +575,7 @@ var MeterDetailPage = (function () {
     };
     MeterDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-meter-detail',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\meter-detail\item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meter</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\meter-detail\item.html"*/
+            selector: 'page-meter-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/meter-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meter</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/meter-detail/item.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_flashlight__["a" /* Flashlight */]])
     ], MeterDetailPage);
@@ -576,13 +586,14 @@ var MeterDetailPage = (function () {
 
 /***/ }),
 
-/***/ 208:
+/***/ 209:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PrevodnikDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -594,18 +605,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var PrevodnikDetailPage = (function () {
-    function PrevodnikDetailPage(navCtrl, navParams) {
+    function PrevodnikDetailPage(navCtrl, navParams, formBuilder) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.formBuilder = formBuilder;
     }
     PrevodnikDetailPage.prototype.ionViewDidLoad = function () {
     };
     PrevodnikDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-prevodnik-detail',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\prevodnik-detail\item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Prevodník jednotiek</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\prevodnik-detail\item.html"*/
+            selector: 'page-prevodnik-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Prevodník jednotiek</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
     ], PrevodnikDetailPage);
     return PrevodnikDetailPage;
 }());
@@ -614,7 +627,7 @@ var PrevodnikDetailPage = (function () {
 
 /***/ }),
 
-/***/ 209:
+/***/ 210:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -641,7 +654,7 @@ var VzdialenostDetailPage = (function () {
     };
     VzdialenostDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-vzdialenost-detail',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\vzdialenost-detail\item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meranie vzdialenosti</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div class="hours">\n          <h1 class="title">Kedy máme otvorené</h1>\n          <ion-grid>\n            <ion-row>\n              <ion-col>\n              </ion-col>\n              <ion-col>\n                <b>Sadrokartóny</b>\n              </ion-col>\n              <ion-col>\n                <b>Stavebniny</b>\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Pondelok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Utorok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Streda\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Štvrtok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Piatok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Sobota\n              </ion-col>\n              <ion-col>\n                07:00 - 13:00\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Nedeľa\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\vzdialenost-detail\item.html"*/
+            selector: 'page-vzdialenost-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vzdialenost-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meranie vzdialenosti</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div class="hours">\n          <h1 class="title">Kedy máme otvorené</h1>\n          <ion-grid>\n            <ion-row>\n              <ion-col>\n              </ion-col>\n              <ion-col>\n                <b>Sadrokartóny</b>\n              </ion-col>\n              <ion-col>\n                <b>Stavebniny</b>\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Pondelok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Utorok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Streda\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Štvrtok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Piatok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Sobota\n              </ion-col>\n              <ion-col>\n                07:00 - 13:00\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Nedeľa\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vzdialenost-detail/item.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], VzdialenostDetailPage);
@@ -652,14 +665,14 @@ var VzdialenostDetailPage = (function () {
 
 /***/ }),
 
-/***/ 210:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QrDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__ = __webpack_require__(212);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -687,6 +700,7 @@ var QrDetailPage = (function () {
             .then(function (status) {
             if (status.authorized) {
                 // camera permission was granted
+                console.log("permission ok");
                 // start scanning
                 var scanSub_1 = _this.qrScanner.scan().subscribe(function (text) {
                     console.log('Scanned something', text);
@@ -698,16 +712,18 @@ var QrDetailPage = (function () {
                 // camera permission was permanently denied
                 // you must use QRScanner.openSettings() method to guide the user to the settings page
                 // then they can grant the permission from there
+                console.log("permission not ok, permanently");
             }
             else {
                 // permission was denied, but not permanently. You can ask for permission again at a later time.
+                console.log("permission not ok, temporarly");
             }
         })
             .catch(function (e) { return console.log('Error is', e); });
     };
     QrDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-qr-detail',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\qr-detail\item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Čítačka QR kódov</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\qr-detail\item.html"*/
+            selector: 'page-qr-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/qr-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Čítačka QR kódov</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/qr-detail/item.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */]])
     ], QrDetailPage);
@@ -718,14 +734,14 @@ var QrDetailPage = (function () {
 
 /***/ }),
 
-/***/ 212:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PredajnaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_maps__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_maps__ = __webpack_require__(293);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -788,7 +804,7 @@ var PredajnaPage = (function () {
     };
     PredajnaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-predajna',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\predajna\item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Predajňa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div class="hours">\n          <h1 class="title">Kedy máme otvorené</h1>\n          <ion-grid>\n            <ion-row>\n              <ion-col>\n              </ion-col>\n              <ion-col>\n                <b>Sadrokartóny</b>\n              </ion-col>\n              <ion-col>\n                <b>Stavebniny</b>\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Pondelok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Utorok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Streda\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Štvrtok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Piatok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Sobota\n              </ion-col>\n              <ion-col>\n                07:00 - 13:00\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Nedeľa\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\predajna\item.html"*/
+            selector: 'page-predajna',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/predajna/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Predajňa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div class="hours">\n          <h1 class="title">Kedy máme otvorené</h1>\n          <ion-grid>\n            <ion-row>\n              <ion-col>\n              </ion-col>\n              <ion-col>\n                <b>Sadrokartóny</b>\n              </ion-col>\n              <ion-col>\n                <b>Stavebniny</b>\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Pondelok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Utorok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Streda\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Štvrtok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Piatok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Sobota\n              </ion-col>\n              <ion-col>\n                07:00 - 13:00\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Nedeľa\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/predajna/item.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]])
     ], PredajnaPage);
@@ -799,7 +815,7 @@ var PredajnaPage = (function () {
 
 /***/ }),
 
-/***/ 213:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -835,7 +851,7 @@ var NastrojeDetailPage = (function () {
     };
     NastrojeDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nastroje-detail',template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\pages\nastroje-detail\item.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-slides pager>\n\n    <ion-slide *ngFor="let slide of slides">\n      <img src="/assets/imgs/{{slide.image}}">\n      <p class="slide-title">{{slide.text}}</p>\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\pages\nastroje-detail\item.html"*/,
+            selector: 'page-nastroje-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-slides pager>\n\n    <ion-slide *ngFor="let slide of slides">\n      <img src="/assets/imgs/{{slide.image}}">\n      <p class="slide-title">{{slide.text}}</p>\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje-detail/item.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], NastrojeDetailPage);
@@ -846,14 +862,14 @@ var NastrojeDetailPage = (function () {
 
 /***/ }),
 
-/***/ 214:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_module__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_module__ = __webpack_require__(237);
 
 
 
@@ -863,39 +879,43 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 236:
+/***/ 237:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_vypocty_list__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_vypocty_detail_vypocty_detail__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_postupy_list__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_postupy_detail_postupy_detail__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_nastroje_list__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_detail_item__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_meter_detail_item__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_prevodnik_detail_item__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_vzdialenost_detail_item__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_qr_detail_item__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_predajna_item__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directives_background_image_background_image__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_nastroje_list__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_detail_item__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_meter_detail_item__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_prevodnik_detail_item__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_vzdialenost_detail_item__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_qr_detail_item__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_predajna_item__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directives_background_image_background_image__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_status_bar__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_qr_scanner__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_qr_scanner__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_flashlight__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_file__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_file_transfer__ = __webpack_require__(295);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -971,6 +991,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__["a" /* SplashScreen */],
                 __WEBPACK_IMPORTED_MODULE_20__ionic_native_qr_scanner__["a" /* QRScanner */],
                 __WEBPACK_IMPORTED_MODULE_21__ionic_native_flashlight__["a" /* Flashlight */],
+                __WEBPACK_IMPORTED_MODULE_22__ionic_native_file__["a" /* File */],
+                __WEBPACK_IMPORTED_MODULE_23__ionic_native_file_transfer__["a" /* FileTransfer */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] }
             ]
@@ -983,7 +1005,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 283:
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -996,8 +1018,8 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_vypocty_list__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_postupy_list__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_nastroje_list__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_predajna_item__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_nastroje_list__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_predajna_item__ = __webpack_require__(213);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1060,7 +1082,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"c:\xampp\htdocs\ionic\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <a menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        <img alt="{{p.title}}" height="20" src="assets/imgs/icons/nav/{{p.icon}}">\n        {{p.title}}\n      </a>\n    </ion-list>\n    <ion-list class="bottomPos">\n      <div *ngFor="let l of links">\n        <a ion-item href="{{l.link}}" target="_blank">\n          <img alt="{{l.title}}" height="20" src="assets/imgs/icons/{{l.icon}}">\n          {{l.title}}\n        </a>\n      </div>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"c:\xampp\htdocs\ionic\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <a menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        <img alt="{{p.title}}" height="20" src="assets/imgs/icons/nav/{{p.icon}}">\n        {{p.title}}\n      </a>\n    </ion-list>\n    <ion-list class="bottomPos">\n      <div *ngFor="let l of links">\n        <a ion-item href="{{l.link}}" target="_blank">\n          <img alt="{{l.title}}" height="20" src="assets/imgs/icons/{{l.icon}}">\n          {{l.title}}\n        </a>\n      </div>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_flashlight__["a" /* Flashlight */]])
     ], MyApp);
@@ -1071,7 +1093,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 291:
+/***/ 292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1099,7 +1121,7 @@ var PostupyService = (function () {
     function PostupyService(http) {
         this.http = http;
         //apiUrl = 'http://127.0.0.1:8000';
-        this.apiUrl = '../../postupy.json';
+        this.apiUrl = './assets/json/postupy.json';
         console.log('Hello PostupyService Provider');
     }
     PostupyService.prototype.getPostupy = function () {
@@ -1123,7 +1145,7 @@ var PostupyService = (function () {
 
 /***/ }),
 
-/***/ 293:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1161,5 +1183,5 @@ var BackgroundImageDirective = (function () {
 
 /***/ })
 
-},[214]);
+},[215]);
 //# sourceMappingURL=main.js.map

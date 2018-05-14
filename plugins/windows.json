@@ -45,6 +45,9 @@
     },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "ionic"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "ionic"
     }
   },
   "dependent_plugins": {

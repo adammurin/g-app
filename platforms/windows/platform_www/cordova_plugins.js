@@ -481,6 +481,22 @@ module.exports = [
         "file": "plugins/cordova-plugin-file-transfer/src/windows/FileTransferProxy.js",
         "pluginId": "cordova-plugin-file-transfer",
         "runs": true
+    },
+    {
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
+    },
+    {
+        "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
+        "file": "plugins/phonegap-plugin-barcodescanner/src/windows/BarcodeScannerProxy.js",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "merges": [
+            ""
+        ]
     }
 ];
 module.exports.metadata = 
@@ -499,7 +515,8 @@ module.exports.metadata =
     "cordova-plugin-flashlight": "3.2.0",
     "cordova-plugin-android-support-v4": "21.0.1",
     "cordova-plugin-file": "6.0.1",
-    "cordova-plugin-file-transfer": "1.7.1"
+    "cordova-plugin-file-transfer": "1.7.1",
+    "phonegap-plugin-barcodescanner": "7.1.2"
 };
 // BOTTOM OF METADATA
 });

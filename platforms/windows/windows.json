@@ -20,7 +20,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 1
+              "count": 2
             }
           ]
         }
@@ -30,7 +30,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 1
+              "count": 2
             }
           ]
         }
@@ -40,7 +40,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 1
+              "count": 2
             }
           ]
         }
@@ -88,6 +88,9 @@
       "PACKAGE_NAME": "ionic"
     },
     "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "ionic"
+    },
+    "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "ionic"
     }
   },
@@ -574,6 +577,22 @@
       "file": "plugins/cordova-plugin-file-transfer/src/windows/FileTransferProxy.js",
       "pluginId": "cordova-plugin-file-transfer",
       "runs": true
+    },
+    {
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "clobbers": [
+        "cordova.plugins.barcodeScanner"
+      ]
+    },
+    {
+      "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
+      "file": "plugins/phonegap-plugin-barcodescanner/src/windows/BarcodeScannerProxy.js",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "merges": [
+        ""
+      ]
     }
   ],
   "plugin_metadata": {
@@ -590,6 +609,7 @@
     "cordova-plugin-flashlight": "3.2.0",
     "cordova-plugin-android-support-v4": "21.0.1",
     "cordova-plugin-file": "6.0.1",
-    "cordova-plugin-file-transfer": "1.7.1"
+    "cordova-plugin-file-transfer": "1.7.1",
+    "phonegap-plugin-barcodescanner": "7.1.2"
   }
 }

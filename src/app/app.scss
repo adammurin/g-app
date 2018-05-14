@@ -15,6 +15,22 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.toolbar-ios {
+    padding: 4px;
+    min-height: 56px;
+    .toolbar-title-ios {
+        text-align: left;
+    }
+}
+
+.bar-button-menutoggle-ios ion-icon {
+    color: #fff;
+}
+
+.toolbar-ios .toolbar-title-ios {
+    color: #fff;
+}
+
 .logo{
     padding: 6px 0 2px;
 }
@@ -27,9 +43,12 @@
     .fixed-content {
         background: map-get($colors, primary);
     }
-    .item-md {
+    .item-md, .item-ios {
         background: map-get($colors, primary);
         color: #fff;
+        &:not([detail-none]) .item-inner {
+            background-image: none;
+        }
         .item-inner {
             border: none;
             img {
@@ -44,6 +63,16 @@
     .logo {
         padding: 6px 10px 2px;
     }
+}
+
+.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+    border-bottom: none;
+}
+
+
+.back-button-icon-ios {
+    margin: -1px 0 0 15px;
+    color: #fff;
 }
 
 .toolbar-background {

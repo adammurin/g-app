@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class PostupyService {
 
 	//apiUrl = 'http://127.0.0.1:8000';
-	apiUrl = '../../postupy.json';
+	apiUrl = './assets/json/postupy.json';
 
   	constructor(public http: HttpClient) {
     	console.log('Hello PostupyService Provider');

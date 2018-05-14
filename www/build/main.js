@@ -290,7 +290,7 @@ var VypoctyService = (function () {
     function VypoctyService(http) {
         this.http = http;
         //apiUrl = 'http://127.0.0.1:8000';
-        this.apiUrl = './assets/json/vypocty.json';
+        this.apiUrl = '../../vypocty.json';
         //console.log('Hello PostupyService Provider');
     }
     VypoctyService.prototype.getVypocty = function () {
@@ -449,8 +449,8 @@ var PostupyPage = (function () {
         this.navParams = navParams;
         this.postupyService = postupyService;
         this.file = file;
-        this.getPostupy();
-        //this.getData();
+        //this.getPostupy();
+        this.getData();
     }
     PostupyPage.prototype.getPostupy = function () {
         var _this = this;
@@ -611,16 +611,254 @@ var PrevodnikDetailPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.formBuilder = formBuilder;
+        this.formOne = this.formBuilder.group({
+            category: [''],
+        });
+        this.formTwo = this.formBuilder.group({
+            length: [''],
+            convertFrom: [''],
+            convertTo: [''],
+            convertFromVal: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            convertToVal: [''],
+            convertFromRate: [''],
+        });
     }
     PrevodnikDetailPage.prototype.ionViewDidLoad = function () {
+        this.setOptions();
+        this.items = this.lengths;
+        this.convertTo = this.items[0].rate;
+        this.convertFromVal = "1";
+        this.convertFrom = this.items[3].rate;
+        this.category = this.categories[0];
+        this.valueSelected();
+    };
+    PrevodnikDetailPage.prototype.setOptions = function () {
+        this.categories = [
+            {
+                "name": "Dĺžka",
+                "key": "lengths"
+            },
+            {
+                "name": "Hmotnosť",
+                "key": "weights"
+            },
+            {
+                "name": "Plocha",
+                "key": "areas"
+            },
+            {
+                "name": "Čas",
+                "key": "times"
+            }
+        ],
+            this.lengths = [
+                {
+                    "code": "mm",
+                    "name": "Milimeter",
+                    "rate": "0.001"
+                },
+                {
+                    "code": "cm",
+                    "name": "Centimeter",
+                    "rate": "0.01"
+                },
+                {
+                    "code": "dm",
+                    "name": "Decimeter",
+                    "rate": "0.1"
+                },
+                {
+                    "code": "m",
+                    "name": "Meter",
+                    "rate": "1"
+                },
+                {
+                    "code": "km",
+                    "name": "Kilometer",
+                    "rate": "1000"
+                },
+                {
+                    "code": "inch",
+                    "name": "Palec",
+                    "rate": "0.0254"
+                },
+                {
+                    "code": "",
+                    "name": "Stopa",
+                    "rate": "0.3048"
+                },
+                {
+                    "code": "",
+                    "name": "Yard",
+                    "rate": "0.9144"
+                },
+                {
+                    "code": "",
+                    "name": "Míľa",
+                    "rate": "1609.344"
+                },
+                {
+                    "code": "",
+                    "name": "Námorná míľa",
+                    "rate": "1852"
+                }
+            ];
+        this.weights = [
+            {
+                "code": "mg",
+                "name": "Miligram",
+                "rate": "0.001"
+            },
+            {
+                "code": "g",
+                "name": "Gram",
+                "rate": "0.01"
+            },
+            {
+                "code": "kg",
+                "name": "Kilogram",
+                "rate": "0.1"
+            },
+            {
+                "code": "t",
+                "name": "Tona",
+                "rate": "1"
+            },
+            {
+                "code": "oz",
+                "name": "Unca",
+                "rate": "1000"
+            },
+            {
+                "code": "lb",
+                "name": "Libra",
+                "rate": "0.0254"
+            }
+        ];
+        this.areas = [
+            {
+                "code": "mg",
+                "name": "Miligram",
+                "rate": "0.001"
+            },
+            {
+                "code": "g",
+                "name": "Gram",
+                "rate": "0.01"
+            },
+            {
+                "code": "kg",
+                "name": "Kilogram",
+                "rate": "0.1"
+            },
+            {
+                "code": "t",
+                "name": "Tona",
+                "rate": "1"
+            },
+            {
+                "code": "oz",
+                "name": "Unca",
+                "rate": "1000"
+            },
+            {
+                "code": "lb",
+                "name": "Libra",
+                "rate": "0.0254"
+            }
+        ];
+        this.times = [
+            {
+                "code": "",
+                "name": "Nanosekunda",
+                "rate": "0.001"
+            },
+            {
+                "code": "",
+                "name": "Mikrosekunda",
+                "rate": "0.01"
+            },
+            {
+                "code": "",
+                "name": "Milisekunda",
+                "rate": "0.1"
+            },
+            {
+                "code": "",
+                "name": "Sekunda",
+                "rate": "1"
+            },
+            {
+                "code": "",
+                "name": "Minúta",
+                "rate": "1"
+            },
+            {
+                "code": "",
+                "name": "Hodina",
+                "rate": "0.0254"
+            },
+            {
+                "code": "",
+                "name": "Deň",
+                "rate": "0.0254"
+            },
+            {
+                "code": "",
+                "name": "Týždeň",
+                "rate": "0.0254"
+            },
+            {
+                "code": "",
+                "name": "Mesiac",
+                "rate": "0.0254"
+            },
+            {
+                "code": "",
+                "name": "Rok",
+                "rate": "0.0254"
+            }
+        ];
+    };
+    PrevodnikDetailPage.prototype.categorySelected = function () {
+        console.log(this.category);
+        if (this.category == "lengths") {
+            this.items = this.lengths;
+        }
+        else if (this.category == "weights") {
+            this.items = this.weights;
+        }
+        else if (this.category == "areas") {
+            this.items = this.areas;
+        }
+        else if (this.category == "times") {
+            this.items = this.times;
+        }
+    };
+    PrevodnikDetailPage.prototype.valueSelected = function () {
+        var temp = this.convertFromVal * this.convertFrom / this.convertTo;
+        temp = this.round(temp, 5);
+        this.convertToVal = temp;
+        console.log(this.convertToVal);
+    };
+    PrevodnikDetailPage.prototype.convert = function () {
+        console.log(this.convertFromRate);
+    };
+    PrevodnikDetailPage.prototype.round = function (number, precision) {
+        var shift = function (number, precision) {
+            var numArray = ("" + number).split("e");
+            return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+        };
+        return shift(Math.round(shift(number, +precision)), -precision);
     };
     PrevodnikDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-prevodnik-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Prevodník jednotiek</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/
+            selector: 'page-prevodnik-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Prevodník jednotiek</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-card>\n    <ion-card-header>\n      Čo chcete prevádzať?\n    </ion-card-header>\n      <ion-card-content>\n        <form [formGroup]="formOne" (ngSubmit)="logForm()">\n          <div>\n            <ion-item>\n              <ion-label stacked>Zvoľte, ktorú veličinu chcete prevádzať</ion-label>\n              <ion-select formControlName="category" [(ngModel)]="category" interface="popover" (ionChange)="categorySelected()">\n                <ion-option *ngFor="let category of categories" [value]="category.key">\n                  {{category.name}}\n                </ion-option>\n              </ion-select>\n            </ion-item>\n          </div>\n        </form>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <ion-card-content>\n\n        <form [formGroup]="formTwo" (ngSubmit)="convert()">\n          <ion-item>\n              <ion-select formControlName="convertFrom" [(ngModel)]="convertFrom" interface="popover" (ionChange)="valueSelected()">\n                <ion-option *ngFor="let item of items" [value]="item.rate">\n                  {{item.name}}\n                </ion-option>\n              </ion-select>\n            <ion-input type="text" formControlName="convertFromVal" [(ngModel)]="convertFromVal" (input)="valueSelected()"></ion-input>\n            <ion-input type="text" formControlName="convertFromRate"></ion-input>\n          </ion-item>\n          <ion-item>\n              <ion-select formControlName="convertTo" [(ngModel)]="convertTo" interface="popover" (ionChange)="valueSelected()">\n                <ion-option *ngFor="let item of items" [value]="item.rate">\n                  {{item.name}}\n                </ion-option>\n              </ion-select>\n            <ion-input type="text" formControlName="convertToVal" [(ngModel)]="convertToVal" (input)="valueSelected()"></ion-input>\n          </ion-item>\n          \n          <button ion-button type="submit" [disabled]="!formTwo.valid">Submit</button>\n        </form>\n      </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object])
     ], PrevodnikDetailPage);
     return PrevodnikDetailPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=item.js.map
@@ -700,7 +938,6 @@ var QrDetailPage = (function () {
             .then(function (status) {
             if (status.authorized) {
                 // camera permission was granted
-                console.log("permission ok");
                 // start scanning
                 var scanSub_1 = _this.qrScanner.scan().subscribe(function (text) {
                     console.log('Scanned something', text);
@@ -712,11 +949,9 @@ var QrDetailPage = (function () {
                 // camera permission was permanently denied
                 // you must use QRScanner.openSettings() method to guide the user to the settings page
                 // then they can grant the permission from there
-                console.log("permission not ok, permanently");
             }
             else {
                 // permission was denied, but not permanently. You can ask for permission again at a later time.
-                console.log("permission not ok, temporarly");
             }
         })
             .catch(function (e) { return console.log('Error is', e); });
@@ -1121,7 +1356,7 @@ var PostupyService = (function () {
     function PostupyService(http) {
         this.http = http;
         //apiUrl = 'http://127.0.0.1:8000';
-        this.apiUrl = './assets/json/postupy.json';
+        this.apiUrl = '../../postupy.json';
         console.log('Hello PostupyService Provider');
     }
     PostupyService.prototype.getPostupy = function () {

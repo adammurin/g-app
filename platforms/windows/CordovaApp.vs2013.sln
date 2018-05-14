@@ -26,8 +26,14 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CordovaApp", "CordovaApp.shproj", "{9EBDB27F-D75B-4D8C-B53F-7BE4A1FE89F9}"
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "CordovaApp.Windows", "CordovaApp.Windows.jsproj", "{58950FB6-2F93-4963-B9CD-637F83F3EFBF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{01412F36-3781-4AF0-903C-ACEA7552C99C}={01412F36-3781-4AF0-903C-ACEA7552C99C}
+	EndProjectSection
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "CordovaApp.Phone", "CordovaApp.Phone.jsproj", "{31B67A35-9503-4213-857E-F44EB42AE549}"
+	ProjectSection(ProjectDependencies) = postProject
+		{01412F36-3781-4AF0-903C-ACEA7552C99C}={01412F36-3781-4AF0-903C-ACEA7552C99C}
+	EndProjectSection
 	ProjectSection(ProjectDependencies) = postProject
 		{01412F36-3781-4AF0-903C-ACEA7552C99C}={01412F36-3781-4AF0-903C-ACEA7552C99C}
 	EndProjectSection
@@ -40,6 +46,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SQLite3.UWP", "..\..\plugins\cordova-sqlite-storage\src\windows\SQLite3-Win-RT\SQLite3\SQLite3.UWP\SQLite3.UWP.vcxproj", "{76e68196-b7dc-4393-a070-d32fc33bc489}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinRTBarcodeReader", "..\..\plugins\cordova-plugin-qrscanner\src\windows\QRReader\QRReader.csproj", "{01412F36-3781-4AF0-903C-ACEA7552C99C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinRTBarcodeReader", "..\..\plugins\phonegap-plugin-barcodescanner\src\windows\lib\WinRTBarcodeReader.csproj", "{01412F36-3781-4AF0-903C-ACEA7552C99C}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

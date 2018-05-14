@@ -25678,6 +25678,23 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.toolbar-ios {
+  padding: 4px;
+  min-height: 56px;
+}
+
+.toolbar-ios .toolbar-title-ios {
+  text-align: left;
+}
+
+.bar-button-menutoggle-ios ion-icon {
+  color: #fff;
+}
+
+.toolbar-ios .toolbar-title-ios {
+  color: #fff;
+}
+
 .logo {
   padding: 6px 0 2px;
 }
@@ -25690,27 +25707,40 @@ ion-navbar.toolbar {
   background: #0093DD;
 }
 
-.show-menu .item-md {
+.show-menu .item-md, .show-menu .item-ios {
   background: #0093DD;
   color: #fff;
 }
 
-.show-menu .item-md .item-inner {
+.show-menu .item-md:not([detail-none]) .item-inner, .show-menu .item-ios:not([detail-none]) .item-inner {
+  background-image: none;
+}
+
+.show-menu .item-md .item-inner, .show-menu .item-ios .item-inner {
   border: none;
 }
 
-.show-menu .item-md .item-inner img {
+.show-menu .item-md .item-inner img, .show-menu .item-ios .item-inner img {
   margin: 4px 8px -4px 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.show-menu .item-md .label-md {
+.show-menu .item-md .label-md, .show-menu .item-ios .label-md {
   margin: 11px 8px 11px 0;
 }
 
 .show-menu .logo {
   padding: 6px 10px 2px;
+}
+
+.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+  border-bottom: none;
+}
+
+.back-button-icon-ios {
+  margin: -1px 0 0 15px;
+  color: #fff;
 }
 
 .toolbar-background {

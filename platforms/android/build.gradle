@@ -94,6 +94,7 @@ ext {
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "cordova-plugin-googlemaps/starter-tbxml-android.gradle"
 apply from: "cordova-plugin-qrscanner/starter-qrscanner.gradle"
+apply from: "phonegap-plugin-barcodescanner/starter-barcodescanner.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -258,6 +259,7 @@ dependencies {
     compile "com.google.android.gms:play-services-maps:11.8.0"
     compile "com.google.android.gms:play-services-location:11.8.0"
     compile "com.android.support:support-core-utils:24.1.0"
+    compile "com.android.support:support-v4:27.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 
