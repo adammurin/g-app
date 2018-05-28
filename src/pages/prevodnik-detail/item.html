@@ -8,16 +8,48 @@
 </ion-header>
 
 <ion-content padding-top>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card>
+    <ion-card-header>
+      Čo chcete prevádzať?
+    </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="formOne" (ngSubmit)="logForm()">
+          <div>
+            <ion-item>
+              <ion-label stacked>Zvoľte, ktorú veličinu chcete prevádzať</ion-label>
+              <ion-select formControlName="category" [(ngModel)]="category" interface="popover" (ionChange)="categorySelected()">
+                <ion-option *ngFor="let category of categories" [value]="category.key">
+                  {{category.name}}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+
+        <form [formGroup]="formTwo" (ngSubmit)="convert()">
+          <ion-item>
+              <ion-select formControlName="convertFrom" [(ngModel)]="convertFrom" interface="popover" (ionChange)="valueSelected()">
+                <ion-option *ngFor="let item of items" [value]="item.rate">
+                  {{item.name}}
+                </ion-option>
+              </ion-select>
+            <ion-input type="text" formControlName="convertFromVal" [(ngModel)]="convertFromVal" (input)="valueSelected()"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-select formControlName="convertTo" [(ngModel)]="convertTo" interface="popover" (ionChange)="valueSelected()">
+                <ion-option *ngFor="let item of items" [value]="item.rate">
+                  {{item.name}}
+                </ion-option>
+              </ion-select>
+            <ion-input type="text" formControlName="convertToVal" [(ngModel)]="convertToVal" (input)="valueSelectedOposite()"></ion-input>
+          </ion-item>
+          
+          <!--<button ion-button type="submit" [disabled]="!formTwo.valid">Submit</button>-->
+        </form>
+      </ion-card-content>
+    </ion-card>
 </ion-content>

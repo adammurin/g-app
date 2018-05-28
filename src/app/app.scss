@@ -31,6 +31,32 @@
     color: #fff;
 }
 
+.text-input-md {
+    float: right;
+    background: #eee;
+    border: 1px solid #ddd;
+    padding: 5px 8px;
+    max-width: 120px;
+}
+
+.scroll-content {
+    background: #f9f9f9;
+}
+
+.card {
+    margin: 3px;
+    border-radius: 2px;
+    width: calc(100% - 6px);
+    h2 {
+        text-align: center;
+        padding: 5px 25px;
+    }
+    img {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
 .logo{
     padding: 6px 0 2px;
 }
@@ -40,7 +66,7 @@
 }
 
 .show-menu {
-    .fixed-content {
+    .fixed-content, .scroll-content {
         background: map-get($colors, primary);
     }
     .item-md, .item-ios {
@@ -127,6 +153,17 @@ form {
 	    right: 0;
 	    bottom: -5px;
 	}
+    .item-md {
+        padding-left: 0;
+    }
+}
+
+.text-input-ios {
+    border: 1px solid #ddd;
+    background: #efefef;
+    padding: 5px 8px;
+    float: right;
+    width: auto;
 }
 
 .bottomPos {
@@ -134,4 +171,9 @@ form {
     bottom: 0;
     left: 0;
     width: 100%;
+}
+
+ion-select {
+    min-width: 180px;
+    margin-right: 20px;
 }

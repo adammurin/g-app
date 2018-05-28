@@ -17,11 +17,14 @@ export class PrevodnikDetailPage {
 
 	categories: any;
 	lengths: any;
+	weights: any;
+	times: any;
+	areas: any;
 	items: any;
 
 	convertFrom;
 	convertTo;
-	onvertFromVal;
+	convertFromVal;
 	convertToVal;
 	convertFromRate;
 
@@ -45,10 +48,10 @@ export class PrevodnikDetailPage {
   ionViewDidLoad() {
   	this.setOptions();
   	this.items = this.lengths;
-  	this.convertTo = this.items[0].rate;
+  	this.convertTo = this.items[1].rate;
   	this.convertFromVal = "1";
   	this.convertFrom = this.items[3].rate;
-  	this.category = this.categories[0];
+  	this.category = this.categories[0].key;
   	this.valueSelected();
   }
 
@@ -127,64 +130,69 @@ export class PrevodnikDetailPage {
 		{
 			"code": "mg",
 			"name": "Miligram",
-			"rate": "0.001"
+			"rate": "0.000001"
 		},
 		{
 			"code": "g",
 			"name": "Gram",
-			"rate": "0.01"
+			"rate": "0.001"
 		},
 		{
 			"code": "kg",
 			"name": "Kilogram",
-			"rate": "0.1"
+			"rate": "1"
 		},
 		{
 			"code": "t",
 			"name": "Tona",
-			"rate": "1"
+			"rate": "1000"
 		},
 		{
 			"code": "oz",
 			"name": "Unca",
-			"rate": "1000"
+			"rate": "0.028349523125"
 		},
 		{
 			"code": "lb",
 			"name": "Libra",
-			"rate": "0.0254"
+			"rate": "0.45359237"
 		}
 	];
 	this.areas = [
 		{
-			"code": "mg",
-			"name": "Miligram",
-			"rate": "0.001"
+			"code": "",
+			"name": "Milimeter štvorcový",
+			"rate": "0.000001"
 		},
 		{
-			"code": "g",
-			"name": "Gram",
+			"code": "",
+			"name": "Centimeter štvorcový",
+			"rate": "0.0001"
+		},
+		{
+			"code": "",
+			"name": "Decimeter štvorcový",
 			"rate": "0.01"
 		},
 		{
-			"code": "kg",
-			"name": "Kilogram",
-			"rate": "0.1"
-		},
-		{
-			"code": "t",
-			"name": "Tona",
+			"code": "",
+			"name": "Meter štvorcový",
 			"rate": "1"
 		},
 		{
-			"code": "oz",
-			"name": "Unca",
-			"rate": "1000"
+			"code": "",
+			"name": "Kilometer štvorcový",
+			"rate": "1000000"
 		},
 		{
-			"code": "lb",
-			"name": "Libra",
-			"rate": "0.0254"
+			"code": "",
+			"name": "Ár",
+			"rate": "100"
+		},
+		{
+			"code": "",
+			"name": "Hektár",
+			"rate": "10000"
 		}
 	];
 	this.times = [
@@ -211,38 +219,37 @@ export class PrevodnikDetailPage {
 		{
 			"code": "",
 			"name": "Minúta",
-			"rate": "1"
+			"rate": "60"
 		},
 		{
 			"code": "",
 			"name": "Hodina",
-			"rate": "0.0254"
+			"rate": "3600"
 		},
 		{
 			"code": "",
 			"name": "Deň",
-			"rate": "0.0254"
+			"rate": "86400"
 		},
 		{
 			"code": "",
 			"name": "Týždeň",
-			"rate": "0.0254"
+			"rate": "604800"
 		},
 		{
 			"code": "",
 			"name": "Mesiac",
-			"rate": "0.0254"
+			"rate": "2419200"
 		},
 		{
 			"code": "",
 			"name": "Rok",
-			"rate": "0.0254"
+			"rate": "29030400"
 		}
 	];
   }
 
    categorySelected() {
-   console.log(this.category);
    	if(this.category == "lengths"){
 		this.items = this.lengths;
    	} else if(this.category == "weights") {
@@ -252,14 +259,21 @@ export class PrevodnikDetailPage {
   	} else if(this.category == "times") {
   		this.items = this.times;
   	}
+  	this.convertTo = this.items[1].rate;
+  	this.convertFrom = this.items[3].rate;
+  	this.valueSelected();
   }
 
   valueSelected() {
   	var temp = this.convertFromVal * this.convertFrom / this.convertTo;
   	temp = this.round(temp,5);
 	this.convertToVal = temp;
-  	console.log(this.convertToVal);
+  }
 
+  valueSelectedOposite() {
+  	var temp = this.convertToVal * this.convertTo / this.convertFrom;
+  	temp = this.round(temp,5);
+	this.convertFromVal = temp;
   }
 
   convert() {

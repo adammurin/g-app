@@ -25695,6 +25695,34 @@ ion-navbar.toolbar {
   color: #fff;
 }
 
+.text-input-md {
+  float: right;
+  background: #eee;
+  border: 1px solid #ddd;
+  padding: 5px 8px;
+  max-width: 120px;
+}
+
+.scroll-content {
+  background: #f9f9f9;
+}
+
+.card {
+  margin: 3px;
+  border-radius: 2px;
+  width: calc(100% - 6px);
+}
+
+.card h2 {
+  text-align: center;
+  padding: 5px 25px;
+}
+
+.card img {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .logo {
   padding: 6px 0 2px;
 }
@@ -25703,7 +25731,7 @@ ion-navbar.toolbar {
   color: #999;
 }
 
-.show-menu .fixed-content {
+.show-menu .fixed-content, .show-menu .scroll-content {
   background: #0093DD;
 }
 
@@ -25795,9 +25823,130 @@ form .label.afterInput {
   bottom: -5px;
 }
 
+form .item-md {
+  padding-left: 0;
+}
+
+.text-input-ios {
+  border: 1px solid #ddd;
+  background: #efefef;
+  padding: 5px 8px;
+  float: right;
+  width: auto;
+}
+
 .bottomPos {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+ion-select {
+  min-width: 180px;
+  margin-right: 20px;
+}
+
+page-meter-detail .grid, page-meter-detail .col {
+  padding: 0;
+}
+
+page-meter-detail .inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+page-meter-detail .inner.flashLightInner {
+  height: calc(100vh - 55px);
+}
+
+page-meter-detail .flashLight {
+  display: table-cell;
+  vertical-align: middle;
+  width: 192px;
+  height: 384px;
+  background: url("./../assets/imgs/nastroje/ic_torch_off.png") no-repeat center center transparent;
+  background-size: auto 100%;
+}
+
+page-meter-detail .flashLight.active {
+  background-image: url("./../assets/imgs/nastroje/ic_torch_on.png");
+  background-size: auto 100%;
+}
+
+page-meter-detail .sideMeter {
+  height: calc(100vh - 55px);
+  padding: 10px 0;
+  display: table;
+}
+
+page-meter-detail .sideMeter .rulers {
+  float: left;
+}
+
+page-meter-detail .sideMeter .ruler {
+  float: left;
+  clear: both;
+  height: 2px;
+  background-color: #bbb;
+  width: 25px;
+  margin: 0.16rem 0 0.15rem;
+}
+
+page-meter-detail .sideMeter .ruler:nth-child(10n+0), page-meter-detail .sideMeter .ruler:first-child, page-meter-detail .sideMeter .ruler:last-child {
+  width: 35px;
+}
+
+page-meter-detail .sideMeter .labels {
+  float: left;
+  margin: -13px 10px -50px;
+}
+
+page-meter-detail .sideMeter .labels .label {
+  font-size: 18px;
+  color: #999;
+  margin: 2.85rem 0;
+}
+
+page-meter-detail .sideMeter .labels .label:first-child {
+  margin-top: 5px;
+}
+
+page-meter-detail * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+page-meter-detail h1 {
+  text-align: center;
+}
+
+page-meter-detail .ball {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  background: skyblue;
+  border-radius: 50%;
+}
+
+page-meter-detail .center {
+  display: block;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+  border: salmon 4px solid;
+  border-radius: 50%;
+}
+
+page-nastroje .card {
+  height: 100%;
 }
