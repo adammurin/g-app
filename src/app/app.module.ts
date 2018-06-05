@@ -16,16 +16,18 @@ import { PrevodnikDetailPage } from '../pages/prevodnik-detail/item';
 import { VzdialenostDetailPage } from '../pages/vzdialenost-detail/item';
 import { QrDetailPage } from '../pages/qr-detail/item';
 import { PredajnaPage } from '../pages/predajna/item';
+import { KontaktyPage } from '../pages/kontakty/item';
+
 
 import { BackgroundImageDirective } from '../directives/background-image/background-image';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
 import { Flashlight } from '@ionic-native/flashlight';
-import { File } from '@ionic-native/file';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { Gyroscope } from "@ionic-native/gyroscope";
+import { GyroNorm } from 'gyronorm';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
     VzdialenostDetailPage,
     QrDetailPage,
     PredajnaPage,
+    KontaktyPage,
     BackgroundImageDirective
   ],
   imports: [
@@ -63,17 +66,17 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
     PrevodnikDetailPage,
     VzdialenostDetailPage,
     QrDetailPage,
-    PredajnaPage
+    PredajnaPage,
+    KontaktyPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    QRScanner,
     BarcodeScanner,
+    Toast,
     Flashlight,
-    File,
-    FileTransfer,
     HttpClientModule,
+    Gyroscope,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

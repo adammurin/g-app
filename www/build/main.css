@@ -25678,6 +25678,10 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+h1, h2, .card-md h1 {
+  color: #0093DD;
+}
+
 .toolbar-ios {
   padding: 4px;
   min-height: 56px;
@@ -25847,6 +25851,55 @@ ion-select {
   margin-right: 20px;
 }
 
+page-kontakty .rootRow {
+  border-bottom: 1px solid #ccc;
+}
+
+page-kontakty .rootRow > .col {
+  padding: 5px 16px;
+}
+
+page-kontakty .rowInfo {
+  padding: 0 0 15px;
+}
+
+page-kontakty .rowInfo .row {
+  padding: 3px 0;
+}
+
+page-kontakty .rowInfo .hodiny {
+  padding: 0 0 10px;
+}
+
+page-kontakty .rowInfo .type {
+  padding: 0 0 0 20px;
+  background: none no-repeat center left transparent;
+  background-size: auto 100%;
+}
+
+page-kontakty .rowInfo .type.mobile {
+  background-image: url("../assets/imgs/icons/mobile.png");
+}
+
+page-kontakty .rowInfo .type.tel {
+  background-image: url("../assets/imgs/icons/phone.png");
+  background-size: auto 100%;
+}
+
+page-kontakty .rowInfo .type.mail {
+  background-image: url("../assets/imgs/icons/email.png");
+  background-size: auto 100%;
+}
+
+page-kontakty .rowInfo ion-col {
+  padding: 0;
+}
+
+page-kontakty .rowToggle .desc {
+  font-weight: bold;
+  padding: 0 0 15px;
+}
+
 page-meter-detail .grid, page-meter-detail .col {
   padding: 0;
 }
@@ -25890,7 +25943,7 @@ page-meter-detail .sideMeter .ruler {
   height: 2px;
   background-color: #bbb;
   width: 25px;
-  margin: 0.16rem 0 0.15rem;
+  margin: 0.22rem 0 0.22rem;
 }
 
 page-meter-detail .sideMeter .ruler:nth-child(10n+0), page-meter-detail .sideMeter .ruler:first-child, page-meter-detail .sideMeter .ruler:last-child {
@@ -25905,7 +25958,10 @@ page-meter-detail .sideMeter .labels {
 page-meter-detail .sideMeter .labels .label {
   font-size: 18px;
   color: #999;
-  margin: 2.85rem 0;
+  margin: 4.1rem 0;
+  height: 22px;
+  display: block;
+  width: 20px;
 }
 
 page-meter-detail .sideMeter .labels .label:first-child {
@@ -25925,11 +25981,9 @@ page-meter-detail .ball {
   display: block;
   width: 50px;
   height: 50px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -25px;
-  margin-top: -25px;
+  position: relative;
+  margin-left: 1px;
+  margin-top: 1px;
   background: skyblue;
   border-radius: 50%;
 }
@@ -25938,15 +25992,34 @@ page-meter-detail .center {
   display: block;
   width: 60px;
   height: 60px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -30px;
+  position: relative;
+  left: 29px;
+  top: calc((50vh - 55px)/1);
+  margin-left: -19px;
   margin-top: -30px;
   border: salmon 4px solid;
   border-radius: 50%;
 }
 
+page-meter-detail .balanceItem {
+  height: calc(100vh - 55px);
+  padding: 10px 0;
+  width: 80%;
+  float: right;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+
 page-nastroje .card {
   height: 100%;
+}
+
+page-predajna #map_canvas {
+  height: 90%;
+  min-width: 150px;
+  min-height: 150px;
+}
+
+page-predajna .scroll-content, page-predajna .content-ios {
+  /*background: transparent;*/
 }

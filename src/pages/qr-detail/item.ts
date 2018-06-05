@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-qr-detail',
@@ -9,43 +11,41 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 })
 
 export class QrDetailPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner, private barcodeScanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner, private barcodeScanner: BarcodeScanner,private toast: Toast, public alertCtrl: AlertController) {
 
   }
 
   ionViewDidLoad() {
-  	this.initScanner();
+    this.scan();
   }
 
 
-	initScanner(){
+    scan() {
+      //this.selectedProduct = {};
+      this.barcodeScanner.scan().then((barcodeData) => {
+          console.log('Barcode data', barcodeData.text);
+          //this.showResult(barcodeData);
+          /*this.toast.show(barcodeData.text, '50000', 'center').subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );
+          */
+      }, (err) => {
+        this.toast.show(err, '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
+      });
+    }
 
-
-this.qrScanner.prepare()
-  .then((status: QRScannerStatus) => {
-     if (status.authorized) {
-       // camera permission was granted
-       console.log("permission ok");
-
-       // start scanning
-       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-         console.log('Scanned something', text);
-
-         this.qrScanner.hide(); // hide camera preview
-         scanSub.unsubscribe(); // stop scanning
-       });
-
-     } else if (status.denied) {
-       // camera permission was permanently denied
-       // you must use QRScanner.openSettings() method to guide the user to the settings page
-       // then they can grant the permission from there
-       console.log("permission not ok, permanently");
-     } else {
-       // permission was denied, but not permanently. You can ask for permission again at a later time.
-       console.log("permission not ok, temporarly");
-     }
-  })
-  .catch((e: any) => console.log('Error is', e));
-
-	}
+    showResult(barcodeData) {
+      let alert = this.alertCtrl.create({
+        title: 'Kód',
+        subTitle: barcodeData.text,
+        buttons: ['OK']
+      });
+      alert.present();
+    }
 }

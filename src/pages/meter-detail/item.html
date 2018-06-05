@@ -7,16 +7,41 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding-top>
+<ion-content>
   <ion-grid>
     <ion-row>
       <ion-col>
-        
+        <div class="sideMeter">
+          <div class="inner">
+            <div class="rulers">
+              <div *ngFor="let ruler of rulers" class="ruler">
+              </div>
+            </div>
+            <div class="labels">
+              <div *ngFor="let label of labels" class="label">
+                {{label}}
+              </div>
+            </div>
+          </div>
+        </div>
       </ion-col>
-    </ion-row>
-    <ion-row>
       <ion-col>
-        
+        <div class="inner flashLightInner">
+          <div class="flashLight" (click)="toggleFlashLight()" [ngClass]="{'active': this.flashLightOn}">
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="balanceItem">
+          <div class="inner">
+            {{this.topPos}}
+
+            <div class="center">
+              <div class="ball" [ngStyle]="{'top.px': this.topPos}">
+              </div>
+            </div>
+          </div>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

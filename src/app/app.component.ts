@@ -3,17 +3,16 @@ import { Nav, Platform } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Flashlight } from '@ionic-native/flashlight';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { File } from '@ionic-native/file';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { GyroNorm } from 'gyronorm';
+
 
 import { HomePage } from '../pages/home/home';
 import { VypoctyPage } from '../pages/vypocty/list';
 import { PostupyPage } from '../pages/postupy/list';
 import { NastrojePage } from '../pages/nastroje/list';
 import { PredajnaPage } from '../pages/predajna/item';
+import { KontaktyPage } from '../pages/kontakty/item';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -25,9 +24,10 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
   links: Array<{title: string, link: string, icon: string}>;
+  GyroNorm;
 
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public flashlight: Flashlight, public qrScanner: QRScanner) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     this.pages = [
@@ -37,7 +37,7 @@ export class MyApp {
       { title: 'Výpočet spotreby materiálu', component: VypoctyPage, icon: 'calc.png'},
       { title: 'Nástroje', component: NastrojePage, icon: 'tools.png'},
       { title: 'Predajňa', component: PredajnaPage, icon: 'store.png'},
-      { title: 'Kontakty', component: PostupyPage, icon: 'contacts.png'}
+      { title: 'Kontakty', component: KontaktyPage, icon: 'contacts.png'}
     ];
 
     this.links = [
@@ -54,7 +54,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.flashlight.switchOn();
+      //this.gyroNorm = new GyroNorm();
     });
   }
 

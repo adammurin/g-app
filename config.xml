@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ionic</name>
+<widget id="io.gipsol.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Gipsol</name>
     <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">Riant, s.r.o.</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -76,22 +76,23 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <engine name="ios" spec="^4.5.4" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="windows" spec="~5.0.0" />
-    <engine name="android" spec="^6.3.0" />
-    <plugin name="cordova-sqlite-storage" spec="^2.2.1" />
+    <engine name="android" spec="^6.4.0" />
+    <plugin name="cordova-sqlite-storage" spec="^2.3.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-device" spec="^2.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-flashlight" spec="^3.2.0" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
-    <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
-    <plugin name="cordova-plugin-googlemaps" spec="dummy">
-        <variable name="API_KEY_FOR_ANDROID" value="(API_KEY_FOR_ANDROID)" />
-        <variable name="API_KEY_FOR_IOS" value="(API_KEY_FOR_IOS)" />
+    <plugin name="cordova-plugin-qrscanner" spec="^2.6.0" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.3.4">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyBZlfsXTWLEJIuTG8iy3euOXNqH76dNSTQ" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyBZlfsXTWLEJIuTG8iy3euOXNqH76dNSTQ" />
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="This app wants to get your location while this app runs only." />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="This app wants to get your location always, even this app runs in background." />
     </plugin>
     <plugin name="cordova-plugin-android-support-v4" spec="^21.0.1">
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
@@ -101,4 +102,7 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="^7.1.2">
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
     </plugin>
+    <plugin name="cordova-plugin-x-toast" spec="^2.6.2" />
+    <plugin name="cordova-plugin-gyroscope" spec="^0.1.4" />
+    <plugin name="cordova-plugin-device-orientation" spec="^2.0.1" />
 </widget>

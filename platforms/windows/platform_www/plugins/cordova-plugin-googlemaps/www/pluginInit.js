@@ -44,7 +44,6 @@ function pluginInit() {
       };
     })();
   }
-
   /*****************************************************************************
    * To prevent strange things happen,
    * disable the changing of viewport zoom level by double clicking.

@@ -1,15 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core'; 
 import { NavController, NavParams } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker
-} from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, Marker } from '@ionic-native/google-maps';
+
+declare var google;
 
 @Component({
   selector: 'page-predajna',
@@ -17,7 +11,9 @@ import {
 })
 
 export class PredajnaPage {
-  map: GoogleMap;
+  //map: GoogleMap;
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
     this.platform.ready().then(() =>
       console.log('toast')
@@ -25,46 +21,36 @@ export class PredajnaPage {
   }
 
   ionViewDidLoad() {
-    this.loadMap();
+    //this.loadMap();
+    //this.initMap();
   }
 
   loadMap() {
+    console.log("map init");
+    // Create a map after the view is ready and the native platform is ready.
+    this.map = GoogleMaps.create('map_canvas');
 
-   let mapOptions: GoogleMapOptions = {
-     camera: {
-        target: {
-          lat: 43.0741904,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
+
+
+    this.map.addMarker({
+      title: 'Gipsol - predajňa stavebnín a sadrokartónové centrum',
+      icon: 'blue',
+      animation: 'DROP',
+      position: {
+        lat: 48.1441051,
+        lng: 17.1496938
       }
-    };
+    }).then((marker: Marker) => {
 
-   this.map = GoogleMaps.create('map_canvas', mapOptions);
+      marker.showInfoWindow();
 
-   // Wait the MAP_READY before using any methods.
-   this.map.one(GoogleMapsEvent.MAP_READY)
-     .then(() => {
-        console.log('Map is ready!');
-
-        // Now you can use all methods safely.
-        this.map.addMarker({
-          title: 'Ionic',
-          icon: 'blue',
-          animation: 'DROP',
-          position: {
-            lat: 43.0741904,
-            lng: -89.3809802
-          }
-        })
-        .then(marker => {
-          marker.on(GoogleMapsEvent.MARKER_CLICK)
-            .subscribe(() => {
-              alert('clicked');
-            });
-        });
-
-     });
+    });
   }
+  initMap() {
+    console.log(document.getElementById('map'));
+        this.map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
 }

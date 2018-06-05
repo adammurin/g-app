@@ -1,0 +1,47 @@
+page-kontakty {
+
+ .rootRow {
+ 	border-bottom: 1px solid #ccc;
+ 	&> .col {
+		padding: 5px 16px;
+ 	}
+ }
+
+ .rowInfo {
+ 	padding: 0 0 15px;
+ 	.row {
+ 		padding: 3px 0;
+ 	}
+	.hodiny {
+	    padding: 0 0 10px;
+	}
+	 	
+  .type {
+  	padding: 0 0 0 20px;
+  	background: none no-repeat center left transparent;
+  	background-size: auto 100%;
+  	&.mobile {
+  	  	background-image: url('../assets/imgs/icons/mobile.png');
+  	}
+  	&.tel {
+  	  	background-image: url('../assets/imgs/icons/phone.png');
+  	  	background-size: auto 100%;
+  	}
+  	&.mail {
+  	  	background-image: url('../assets/imgs/icons/email.png');
+  	  	background-size: auto 100%;
+  	}
+  }
+  ion-col {
+  	padding: 0;
+  }
+ }
+
+ .rowToggle {
+ 	.desc {
+ 		font-weight: bold;
+ 		padding: 0 0 15px;
+ 	}
+ }
+
+}

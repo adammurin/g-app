@@ -10,9 +10,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "ionic"
     },
-    "cordova-plugin-googlemaps": {
-      "PACKAGE_NAME": "ionic"
-    },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "ionic"
     },
@@ -48,6 +45,18 @@
     },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "ionic"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "ionic"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "ionic"
+    },
+    "cordova-plugin-gyroscope": {
+      "PACKAGE_NAME": "Gipsol"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "Gipsol"
     }
   },
   "dependent_plugins": {

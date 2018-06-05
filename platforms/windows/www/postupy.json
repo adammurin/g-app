@@ -51,7 +51,41 @@
     "publikovane": 1,
     "slug": "strop-s-dvojitou-konstrukciou",
     "text": "Sadrokartonový strop s dvojitou konštrukciou",
-    "updated_at": "2018-03-10 15:04:54"
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/1.jpg",
+	    	"text":"Vymeriame a vyznačíme polohu stropu. Je potrebné zohľadniť hrúbku opláštenia."
+	    },
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/2.jpg",
+	    	"text":"Na UD profily nalepíme penové tesnenie a pripevníme natĺkacími hmoždinkami alebo iným vhodným prostriedkom podľa druhu podkladu po obvode miestnosti."
+	    },
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/3.jpg",
+	    	"text":"Vymeriame polohu závesov, ktorých rozostup je v smere nosných profilov maximálne 900 mm a kolmom smere maximálne 1000 mm. Závesy pripevníme stropným klincom do betónu alebo skrutkou do dreva."
+	    },
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/4.jpg",
+	    	"text":"Pri použití perových závesov nastavíme požadovanú výškovú polohu."
+	    },
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/5.jpg",
+	    	"text":"Na UD profily položíme nosné CD profily v osovej vzdialenosti maximálne 1000 mm a upevníme závesy."
+	    },
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/6.jpg",
+	    	"text":"Do UD profilov vložíme montážne CD profily v osovej vzdialenosti maximálne 500 mm a spojíme krížovými spojkami s nosnými CD profilmi."
+	    },
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/7.jpg",
+	    	"text":"Pomocou skrutiek TN opláštime konštrukciu sadrokartónovými doskami. Dosky kladieme dĺžkou kolmo na montážne profily tak, aby nedochádzalo k vytváraniu krížových spojov."
+	    },
+	    {
+	    	"image":"pracovne-postupy/strop-s-dvojitou-konstrukciou/8.jpg",
+	    	"text":"Pretmelíme spoje dosiek a hlavy skrutiek."
+	    }
+    ]
   },
   {
     "created_at": "2018-03-10 15:04:54",
@@ -64,17 +98,337 @@
     "updated_at": "2018-03-10 15:04:54",
     "slides": [
 	    {
-	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/sadrokartonove-podkrovie-1.jpg",
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/1.jpg",
 	    	"text":"Na UD profily nalepíme penové tesnenie."
 	    },
 	    {
-	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/sadrokartonove-podkrovie-2.jpg",
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/2.jpg",
 	    	"text":"UD profily pripevníme natĺkacími hmoždinkami alebo iným vhodným prostriedkom podľa druhu podkladu po obvode."
 	    },
 	    {
-	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/sadrokartonove-podkrovie-3.jpg",
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/3.jpg",
 	    	"text":"Pripravíme závesy na CD profily podľa rozostupu krokiev."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/4.jpg",
+	    	"text":"Vymeriame a umiestnime CD profily s maximálnym rozostupom 500 mm."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/5.jpg",
+	    	"text":"Závesy skrutkujeme dvojicou skrutiek do dreva s plochou hlavou."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/6.jpg",
+	    	"text":"V prípade potreby predĺžime CD profily pomocou spojovacích kusov. Vedľajšie nadpojenie striedame minimálne o šírku dosky."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/7.jpg",
+	    	"text":"Do pripravenej podkonštrukcie vložíme tepelnú izoláciu z minerálnych vlákien."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/8.jpg",
+	    	"text":"Prichytíme parozábrannú fóliu na terče pripravené z obojstrannej lepiacej pásky."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/9.jpg",
+	    	"text":"Pomocou skrutiek TN opláštime konštrukciu sadrokartónovými doskami. Dosky kladieme dĺžkou kolmo na montážne profily tak, aby nedochádzalo k vytváraniu krížových spojov."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonove-podkrovie/10.jpg",
+	    	"text":"Pretmelíme spoje dosiek a hlavy skrutiek."
+	    }
+    ]
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "hlavny_obrazok": "pracovne-postupy/sadrokartonova-priecka/sadrokartonova-priecka.jpg",
+    "id": 4,
+    "nazov": "Sadrokartónová priečka",
+    "publikovane": 1,
+    "slug": "sadrokartonova-priecka",
+    "text": "Sadrokartónová priečka",
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/1.jpg",
+	    	"text":"Vymeriame a vyznačíme polohu priečky. Je potrebné zohľadniť hrúbku opláštenia, prípadne dverné otvory."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/2.jpg",
+	    	"text":"Pred osadením podlepíme UW profily penovým tesnením."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/3.jpg",
+	    	"text":"UW profily pripevníme natĺkacími hmoždinkami alebo iným vhodným prostriedkom podľa druhu podkladu na podlahu a strop."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/4.jpg",
+	    	"text":"CW profily pripevníme na steny rovnakým postupom ako UW profily."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/5.jpg",
+	    	"text":"Do UW profilov nasunieme CW profily. Profily navzájom neskrutkujeme. Rozostup CW profilov je maximálne 600 mm."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/6.jpg",
+	    	"text":"Pomocou skrutiek TN opláštime jednu stranu konštrukcie sadrokartónovými doskami. Dosky kladieme na výšku tak, aby nedochádzalo k vytváraniu krížových spojov."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/7.jpg",
+	    	"text":"Do vnútra priečky uložíme v prípade potreby inštalačné vedenia a medzi profily vložíme izoláciu z minerálnych vlákien."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/8.jpg",
+	    	"text":"Pomocou skrutiek TN opláštime druhú stranu konštrukcie sadrokartónovými doskami."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sadrokartonova-priecka/9.jpg",
+	    	"text":"Pretmelíme spoje dosiek a hlavy skrutiek."
+	    }
+    ]
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "hlavny_obrazok": "pracovne-postupy/predsadena-stena-volne-stojaca/predsadena-stena-volne-stojaca.jpg",
+    "id": 5,
+    "nazov": "Predsadená stena voľne stojaca",
+    "publikovane": 1,
+    "slug": "predsadena-stena-volne-stojaca",
+    "text": "Predsadená stena voľne stojaca",
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-volne-stojaca/1.jpg",
+	    	"text":"Pred osadením podlepíme UW profily penovým tesnením."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-volne-stojaca/2.jpg",
+	    	"text":"Vymeriame polohu konštrukcie a UW profily pripevníme natĺkacími hmoždinkami alebo iným vhodným prostriedkom podľa druhu podkladu na podlahu a strop."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-volne-stojaca/3.jpg",
+	    	"text":"Do UW profilov nasunieme CW profily. Profily navzájom neskrutkujeme. Rozostup CW profilov je maximálne 600 mm."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-volne-stojaca/4.jpg",
+	    	"text":"Medzi profily vložíme izoláciu z minerálnych vlákien."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-volne-stojaca/5.jpg",
+	    	"text":"Pomocou skrutiek TN opláštime konštrukciu sadrokartónovými doskami. Dosky kladieme na výšku tak, aby nedochádzalo k vytváraniu krížových spojov."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-volne-stojaca/6.jpg",
+	    	"text":"Pretmelíme spoje dosiek a hlavy skrutiek."
+	    }
+    ]
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "hlavny_obrazok": "pracovne-postupy/predsadena-stena-kotvena/predsadena-stena-kotvena.jpg",
+    "id": 6,
+    "nazov": "Predsadená stena kotvená",
+    "publikovane": 1,
+    "slug": "predsadena-stena-kotvena",
+    "text": "Predsadená stena kotvená",
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/1.jpg",
+	    	"text":"Pred osadením podlepíme UD profily penovým tesnením."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/2.jpg",
+	    	"text":"Vymeriame polohu konštrukcie a UD profily pripevníme natĺkacími hmoždinkami alebo iným vhodným prostriedkom podľa druhu podkladu na podlahu a strop."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/3.jpg",
+	    	"text":"Nastaviteľné strmene podlepíme penovým tesnením."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/4.jpg",
+	    	"text":"Plánovaný rozostup CD profilov je maximálne 600 mm. Vertikálny rozostup strmeňov je maximálne 1250 mm. Strmene pripevníme vhodnými hmoždinkami podľa podkladovej steny."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/5.jpg",
+	    	"text":"Do UD profilov nasunieme CD profily. Profily navzájom neskrutkujeme. CD profily pripevníme o strmene pomocou LB skrutiek."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/6.jpg",
+	    	"text":"Medzi profily vložíme izoláciu z minerálnych vlákien."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/5.jpg",
+	    	"text":"Pomocou skrutiek TN opláštime konštrukciu sadrokartónovými doskami. Dosky kladieme na výšku tak, aby nedochádzalo k vytváraniu krížových spojov."
+	    },
+	    {
+	    	"image":"pracovne-postupy/predsadena-stena-kotvena/6.jpg",
+	    	"text":"Pretmelíme spoje dosiek a hlavy skrutiek."
+	    }
+    ]
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "hlavny_obrazok": "pracovne-postupy/sucha-omietka/sucha-omietka.jpg",
+    "id": 7,
+    "nazov": "Suchá omietka",
+    "publikovane": 1,
+    "slug": "sucha-omietka",
+    "text": "Suchá omietka",
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/sucha-omietka/1.jpg",
+	    	"text":"Podklad ošetríme vhodným penetračným náterom zvoleným podľa nasiakavosti povrchu."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-omietka/2.jpg",
+	    	"text":"Pripravíme si osadzovaciu maltu rovnomerným sypaním do čistej studenej vody približne po jej hladinu a rozmiešane, aby sme dosiahli správnu konzistenciu."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-omietka/3.jpg",
+	    	"text":"Vyznačíme si úroveň líca podkladu na podlahe a strope. Na rub dosiek nanášame maltu vo forme terčov v troch radoch v pozdĺžnej osi dosky."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-omietka/4.jpg",
+	    	"text":"Vzdialenosť nanesených terčov je približne 30 až 35 cm, hrúbka 10 až 40 mm."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-omietka/5.jpg",
+	    	"text":"Dosky osadíme na stenu na podložkách hrubých približne 10 mm. Rovnakú medzeru necháme pri strope. Medzery umožnia optimálne vyrovnanie a odvetranie vlhkosti malty."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-omietka/6.jpg",
+	    	"text":"Pomocou vodováhy, vyrovnávacej laty a gumového kladiva vyrovnáme dosky. Rovinnosť kontrolujeme vo všetkých smeroch."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-omietka/7.jpg",
+	    	"text":"Pretmelíme spoje dosiek a hlavy skrutiek."
+	    }
+    ]
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "hlavny_obrazok": "pracovne-postupy/kazetovy-strop/kazetovy-strop.jpg",
+    "id": 8,
+    "nazov": "Kazetový strop",
+    "publikovane": 1,
+    "slug": "kazetovy-strop",
+    "text": "Kazetový strop",
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/1.jpg",
+	    	"text":"Vyznačíme výškovú úroveň podhľadu. Pripevníme obvodové L profily pomocou hmoždiniek alebo skrutiek podľa materiálu stien."
+	    },
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/2.jpg",
+	    	"text":"Pripevníme závesné drôty pomocou kovových hmoždiniek do betónového stropu alebo skrutkami do drevených nosných častí stropu."
+	    },
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/3.jpg",
+	    	"text":"Pomocou závesných prvkov pripevníme nosné profily kazetového stropu k pripraveným drôtom. Osová vzdialenosť profilov je 1200 mm. Maximálna vzdialenosť medzi závesmi 1200 mm."
+	    },
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/4.jpg",
+	    	"text":"Pomocou zámkov upevníme vedľajšie 1200 mm dlhé profily v osovej vzdialenosti 600 mm medzi nosné profily."
+	    },
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/5.jpg",
+	    	"text":"Pomocou zámkov upevníme vedľajšie 600 mm dlhé profily medzi 1200 mm dlhé vedľajšie profily a dokončíme závesnú konštrukciu pre kazety."
+	    },
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/6.jpg",
+	    	"text":"Medzi profily vložíme izoláciu z minerálnych vlákien."
+	    },
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/5.jpg",
+	    	"text":"Do vzniknutej konštrukcie vložíme stropné kazety."
+	    },
+	    {
+	    	"image":"pracovne-postupy/kazetovy-strop/6.jpg",
+	    	"text":"Dokončený kazetový podhľad."
+	    }
+    ]
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "hlavny_obrazok": "pracovne-postupy/sucha-podlaha-rigidur/sucha-podlaha-rigidur.jpg",
+    "id": 9,
+    "nazov": "Suchá podlaha Rigidur",
+    "publikovane": 1,
+    "slug": "sucha-podlaha-rigidur",
+    "text": "Suchá podlaha Rigidur",
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/sucha-podlaha-rigidur/1.jpg",
+	    	"text":"Po obvode miestnosti nalepíme okrajový dilatačný pás."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-podlaha-rigidur/2.jpg",
+	    	"text":"Na vyrovnanie alebo zvýšenie úrovne podlahy použijeme suchý podsyp Rigidur. Pri hrúbke nad 100 mm je nutné podsyp zhutniť."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-podlaha-rigidur/3.jpg",
+	    	"text":"Začneme ukladať podlahové dielce. Na každú spodnú časť polodrážky rovnomerne nanesieme polyuretánové lepidlo Rigidur v dvoch pruhoch."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-podlaha-rigidur/4.jpg",
+	    	"text":"Spoje podlahových dielcov zaistíme pred stuhnutím lepidla skrutkami Rigidur v maximálnom rozostupe 250 mm."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-podlaha-rigidur/5.jpg",
+	    	"text":"Po položení celej podlahy odrežeme viditeľnú časť dilatačného pásu."
+	    },
+	    {
+	    	"image":"pracovne-postupy/sucha-podlaha-rigidur/6.jpg",
+	    	"text":"Po stuhnutí lepidla pretmelíme spoje dosiek a hlavy skrutiek tmelom Vario. Po vyschnutí tmel prebrúsime."
+	    }
+    ]
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "hlavny_obrazok": "pracovne-postupy/fasadny-system-s-mineralnou-vlnou/fasadny-system-s-mineralnou-vlnou.jpg",
+    "id": 10,
+    "nazov": "Fasádny systém s minerálnou vlnou",
+    "publikovane": 1,
+    "slug": "fasadny-system-s-mineralnou-vlnou",
+    "text": "Fasádny systém s minerálnou vlnou",
+    "updated_at": "2018-03-10 15:04:54",
+    "slides": [
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/1.jpg",
+	    	"text":"Osadíme zakladacie profily podľa hrúbky izolantu minimálne 30 cm nad terénom. Profily kotvíme rozpernými hmoždinkami."
+	    },
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/2.jpg",
+	    	"text":"Lepidlom najprv vytvoríme tenkú penetračnú vrstvu na doskách a následne nanesieme lepidlo po celom okraji dosiek a bodovo v strednej časti."
+	    },
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/3.jpg",
+	    	"text":"Dosky ukladáme natesno, bez škár. Vodováhou kontrolujeme rovnosť uloženia dosiek."
+	    },
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/4.jpg",
+	    	"text":"Vytvoríme vrty pre rozperné kotvy."
+	    },
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/5.jpg",
+	    	"text":"Osadíme rozperné kotvy."
+	    },
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/6.jpg",
+	    	"text":"Pred armovaním osadíme všetky ukončovacie, dilatačné, tesniace lišty a výstužné prvky."
+	    },
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/5.jpg",
+	    	"text":"Lepidlom opäť vytvoríme tenkú penetračnú vrstvu na povrchu dosiek a začneme nanášať hlavnú vrstvu lepidla so sklotextilnou sieťkou."
+	    },
+	    {
+	    	"image":"pracovne-postupy/fasadny-system-s-mineralnou-vlnou/6.jpg",
+	    	"text":"Lepidlo presahujúce cez sieťku doplníme a uhladíme. Povrch pripravíme na finálnu povrchovú úpravu."
 	    }
     ]
   }
-]
+]	

@@ -8,7 +8,9 @@
     "publikovane": 1,
     "slug": "strop-s-jednoduchou-konstrukciou",
     "text": "Sadrokartonový strop s jednoduchou konštrukciou.",
-    "updated_at": "2018-03-10 14:58:25"
+    "updated_at": "2018-03-10 14:58:25",
+    "width_label":"Dĺžka miestnosti",
+    "height_label":"Šírka miestnosti"
   },
   {
     "created_at": "2018-03-10 15:04:54",
@@ -19,7 +21,9 @@
     "publikovane": 1,
     "slug": "strop-s-dvojitou-konstrukciou",
     "text": "Sadrokartonový strop s dvojitou konštrukciou",
-    "updated_at": "2018-03-10 15:04:54"
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka miestnosti",
+    "height_label":"Šírka miestnosti"
   },
   {
     "created_at": "2018-03-10 15:04:54",
@@ -30,6 +34,99 @@
     "publikovane": 1,
     "slug": "sadrokartonove-podkrovie",
     "text": "Sadrokartónové podkrovie",
-    "updated_at": "2018-03-10 15:04:54"
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka miestnosti",
+    "height_label":"Šírka miestnosti"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "2",
+    "hlavny_obrazok": "pracovne-postupy/sadrokartonova-priecka/sadrokartonova-priecka.jpg",
+    "id": 4,
+    "nazov": "Sadrokartónová priečka",
+    "publikovane": 1,
+    "slug": "sadrokartonova-priecka",
+    "text": "Sadrokartónová priečka",
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka steny",
+    "height_label":"Výška steny"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "2",
+    "hlavny_obrazok": "pracovne-postupy/predsadena-stena-volne-stojaca/predsadena-stena-volne-stojaca.jpg",
+    "id": 5,
+    "nazov": "Predsadená stena voľne stojaca",
+    "publikovane": 1,
+    "slug": "predsadena-stena-volne-stojaca",
+    "text": "Predsadená stena voľne stojaca",
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka steny",
+    "height_label":"Výška steny"
+  },
+  {
+    "created_at": "2018-03-10 14:58:25",
+    "calculation_type": "2",
+    "hlavny_obrazok": "pracovne-postupy/predsadena-stena-kotvena/predsadena-stena-kotvena.jpg",
+    "id": 6,
+    "nazov": "Predsadená stena kotvená",
+    "publikovane": 1,
+    "slug": "predsadena-stena-kotvena",
+    "text": "Predsadená stena kotvená",
+    "updated_at": "2018-03-10 14:58:25",
+    "width_label":"Dĺžka steny",
+    "height_label":"Výška steny"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "2",
+    "hlavny_obrazok": "pracovne-postupy/sucha-omietka/sucha-omietka.jpg",
+    "id": 7,
+    "nazov": "Suchá omietka",
+    "publikovane": 1,
+    "slug": "sucha-omietka",
+    "text": "Suchá omietka",
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka steny",
+    "height_label":"Výška steny"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "1",
+    "hlavny_obrazok": "pracovne-postupy/kazetovy-strop/kazetovy-strop.jpg",
+    "id": 8,
+    "nazov": "Kazetový strop",
+    "publikovane": 1,
+    "slug": "kazetovy-strop",
+    "text": "Kazetový strop",
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka miestnosti",
+    "height_label":"Šírka miestnosti"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "1",
+    "hlavny_obrazok": "pracovne-postupy/fasadny-system-s-mineralnou-vlnou/fasadny-system-s-mineralnou-vlnou.jpg",
+    "id": 9,
+    "nazov": "Fasádny systém s minerálnou vlnou",
+    "publikovane": 1,
+    "slug": "fasadny-system-s-mineralnou-vlnou",
+    "text": "Fasádny systém s minerálnou vlnou",
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka steny",
+    "height_label":"Výška steny"
+  },
+  {
+    "created_at": "2018-03-10 15:04:54",
+    "calculation_type": "1",
+    "hlavny_obrazok": "pracovne-postupy/fasadny-system-s-polystyrenom/fasadny-system-s-polystyrenom.jpg",
+    "id": 10,
+    "nazov": "Fasádny systém s polystyrénom",
+    "publikovane": 1,
+    "slug": "fasadny-system-s-polystyrenom",
+    "text": "Fasádny systém s polystyrénom",
+    "updated_at": "2018-03-10 15:04:54",
+    "width_label":"Dĺžka steny",
+    "height_label":"Výška steny"
   }
 ]

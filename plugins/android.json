@@ -16,12 +16,6 @@
     "cordova-plugin-flashlight": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-googlemaps": {
-      "API_KEY_FOR_ANDROID": "AIzaSyAeERBQh-G773Lk1o5vBaOriN4EIbWiMV0",
-      "PLAY_SERVICES_VERSION": "12.0.0",
-      "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
@@ -52,6 +46,21 @@
     "phonegap-plugin-barcodescanner": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "(API_KEY_FOR_ANDROID)",
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "ANDROID_SUPPORT_V4_VERSION": "26.1.0",
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-gyroscope": {
+      "PACKAGE_NAME": "io.gipsol.app"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "io.gipsol.app"
     }
   },
   "dependent_plugins": {

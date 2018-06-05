@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -7,108 +8,120 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding-top>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div class="hours">
-          <h1 class="title">Kedy máme otvorené</h1>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-              </ion-col>
-              <ion-col>
-                <b>Sadrokartóny</b>
-              </ion-col>
-              <ion-col>
-                <b>Stavebniny</b>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Pondelok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Utorok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Streda
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Štvrtok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Piatok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Sobota
-              </ion-col>
-              <ion-col>
-                07:00 - 13:00
-              </ion-col>
-              <ion-col>
-                zatvorené
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Nedeľa
-              </ion-col>
-              <ion-col>
-                zatvorené
-              </ion-col>
-              <ion-col>
-                zatvorené
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="hours">
+            
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h1 class="title">Kedy máme otvorené</h1>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                </ion-col>
+                <ion-col>
+                  <b>Sadrokartóny</b>
+                </ion-col>
+                <ion-col>
+                  <b>Stavebniny</b>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Pondelok
+                </ion-col>
+                <ion-col>
+                  07:00 - 17:00
+                </ion-col>
+                <ion-col>
+                  07:00 - 15:30
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Utorok
+                </ion-col>
+                <ion-col>
+                  07:00 - 17:00
+                </ion-col>
+                <ion-col>
+                  07:00 - 15:30
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Streda
+                </ion-col>
+                <ion-col>
+                  07:00 - 17:00
+                </ion-col>
+                <ion-col>
+                  07:00 - 15:30
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Štvrtok
+                </ion-col>
+                <ion-col>
+                  07:00 - 17:00
+                </ion-col>
+                <ion-col>
+                  07:00 - 15:30
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Piatok
+                </ion-col>
+                <ion-col>
+                  07:00 - 17:00
+                </ion-col>
+                <ion-col>
+                  07:00 - 15:30
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Sobota
+                </ion-col>
+                <ion-col>
+                  07:00 - 13:00
+                </ion-col>
+                <ion-col>
+                  zatvorené
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Nedeľa
+                </ion-col>
+                <ion-col>
+                  zatvorené
+                </ion-col>
+                <ion-col>
+                  zatvorené
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <!--<div id="map_canvas">
+            <button ion-button (click)="onButtonClick($event)">Start demo</button>
+          </div>-->
+
+          <div #map id="map"></div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>

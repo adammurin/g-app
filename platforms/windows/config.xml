@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.gipsol.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="QRScanner">
         <param name="windows-package" value="QRScanner" />
     </feature>
-    <name>ionic</name>
+    <feature name="Toast" value="Toast" />
+    <name>Gipsol</name>
     <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">Riant, s.r.o.</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

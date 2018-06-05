@@ -1,3 +1,98 @@
-page-item {
+page-meter-detail {
+
+	.grid, .col {
+		padding: 0;
+	}
+	.inner {
+		display: table-cell;
+		vertical-align: middle;
+		&.flashLightInner {
+			height: calc(100vh - 55px);
+		}
+	}
+	.flashLight {
+		display: table-cell;
+		vertical-align: middle;
+		width: 192px;
+		height: 384px;
+		background: url('./../assets/imgs/nastroje/ic_torch_off.png') no-repeat center center transparent;
+		background-size: auto 100%;
+		&.active {
+			background-image: url('./../assets/imgs/nastroje/ic_torch_on.png');
+			background-size: auto 100%;
+		}
+	}
+
+	.sideMeter {
+		height: calc(100vh - 55px);
+		padding: 10px 0;
+		display: table;
+		.rulers {
+			float: left;
+		}
+		.ruler {
+			float: left;
+			clear: both;
+			height: 2px;
+			background-color: #bbb;
+			width: 25px;
+			margin: 0.22rem 0 0.22rem;
+			&:nth-child(10n+0), &:first-child, &:last-child{
+				width: 35px;
+			}
+		}
+		.labels {
+		    float: left;
+		    margin: -13px 10px -50px;
+		    .label {
+		    	font-size: 18px;
+		    	color: #999;
+				margin: 4.1rem 0;
+			    height: 22px;
+			    display: block;
+			    width: 20px;
+		    	&:first-child {
+		    		margin-top: 5px;
+		    	}
+		    }
+		}
+	}
+
+	* {
+	  box-sizing: border-box;
+	}
+	h1 {
+	  text-align: center;
+	}
+	.ball {
+	  display: block;
+	  width: 50px;
+	  height: 50px;
+	  position: relative;
+		margin-left: 1px;
+    	margin-top: 1px;
+	  background: skyblue;
+	  border-radius: 50%;
+	}
+	.center {
+	  display: block;
+	  width: 60px;
+	  height: 60px;
+	  position: relative;
+	  left: 29px;
+	  top: calc((50vh - 55px)/1);
+	  margin-left: -19px;
+	  margin-top: -30px;
+	  border: salmon 4px solid;
+	  border-radius: 50%;
+	}
+	.balanceItem {
+		height: calc(100vh - 55px);
+		padding: 10px 0;
+		width: 80%;
+	    float: right;
+	    border: 1px solid #ccc;
+	    border-right: none;
+	}
 
 }

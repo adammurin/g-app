@@ -1,0 +1,178 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Kontakty</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="rootRow">
+      <ion-col>
+        <div class="rowToggle" (click)="showRowInfoFirst()">
+          <h2>Obchodné oddelenie</h2>
+          <div class="desc">cenové ponuky, technické poradenstvo</div>
+        </div>
+        <div class="rowInfo" *ngIf="showInfoFirst == true">
+          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>
+          <ion-row>
+            <ion-col>
+              <div class="type mobile">
+                mobil:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val mobile">
+                <a href="tel:+421940600891">0940/600 891</a>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="type tel">
+                tel./fax.:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val tel">
+                <a href="tel:+421253419284">02/5341 9284</a>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="type mail">
+                e-mail:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val mail">
+                <a href="mailto:obchod@gipsol.sk">obchod@gipsol.sk</a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rootRow">
+      <ion-col>
+        <div class="rowToggle" (click)="showRowInfoSecond()">
+          <h2>Odbyt</h2>
+          <div class="desc">tovar na objednávku, revízne klapky</div>
+        </div>
+        <div class="rowInfo" *ngIf="showInfoSecond == true">
+          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>
+          <ion-row>
+            <ion-col>
+              <div class="type mobile">
+                mobil:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val mobile">
+                <a href="tel:+421940600891">0940/600 891</a>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="type tel">
+                tel./fax.:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val tel">
+                <a href="tel:+421253416042">02/5341 6042</a>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="type mail">
+                e-mail:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val mail">
+                <a href="mailto:gipsol@gipsol.sk">gipsol@gipsol.sk</a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rootRow">
+      <ion-col>
+        <div class="rowToggle" (click)="showRowInfoThird()">
+          <h2>Stavebniny</h2>
+          <div class="desc">informácie</div>
+        </div>
+        <div class="rowInfo" *ngIf="showInfoThird == true">
+          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>
+          <ion-row>
+            <ion-col>
+              <div class="type tel">
+                tel./fax.:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val tel">
+                <a href="tel:+421220910135">02/2091 0135</a>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="type mail">
+                e-mail:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val mail">
+                <a href="mailto:stavebniny@gipsol.sk">stavebniny@gipsol.sk</a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rootRow">
+      <ion-col>
+        <div class="rowToggle" (click)="showRowInfoFourth()">
+          <h2>Ekonomický úsek</h2>
+          <div class="desc">fakturácia</div>
+        </div>
+        <div class="rowInfo" *ngIf="showInfoFourth == true">
+          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>
+          <ion-row>
+            <ion-col>
+              <div class="type tel">
+                tel./fax.:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val tel">
+                <a href="tel:+421253419282">02/5341 9282</a>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="type mail">
+                e-mail:
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="val mail">
+                <a href="mailto:ekonomika@gipsol.sk">ekonomika@gipsol.sk</a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

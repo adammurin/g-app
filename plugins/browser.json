@@ -28,9 +28,6 @@
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-googlemaps": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-qrscanner": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
@@ -48,6 +45,18 @@
     },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-gyroscope": {
+      "PACKAGE_NAME": "io.gipsol.app"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "io.gipsol.app"
     }
   },
   "dependent_plugins": {}
