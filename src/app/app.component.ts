@@ -3,10 +3,9 @@ import { Nav, Platform } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GyroNorm } from 'gyronorm';
-
 
 import { HomePage } from '../pages/home/home';
+import { LetakyPage } from '../pages/letaky/list';
 import { VypoctyPage } from '../pages/vypocty/list';
 import { PostupyPage } from '../pages/postupy/list';
 import { NastrojePage } from '../pages/nastroje/list';
@@ -31,8 +30,8 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: HomePage, icon: 'home.png'},
-      { title: 'Akciové letáky', component: PostupyPage, icon: 'news.png'},
+      { title: 'Úvod', component: HomePage, icon: 'home.png'},
+      { title: 'Akciové letáky', component: LetakyPage, icon: 'news.png'},
       { title: 'Pracovné postupy', component: PostupyPage, icon: 'procedures.png'},
       { title: 'Výpočet spotreby materiálu', component: VypoctyPage, icon: 'calc.png'},
       { title: 'Nástroje', component: NastrojePage, icon: 'tools.png'},
@@ -54,7 +53,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //this.gyroNorm = new GyroNorm();
     });
   }
 

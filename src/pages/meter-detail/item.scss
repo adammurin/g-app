@@ -68,11 +68,14 @@ page-meter-detail {
 	  display: block;
 	  width: 50px;
 	  height: 50px;
-	  position: relative;
-		margin-left: 1px;
+	  position: absolute;
+		margin-left: -4px;
     	margin-top: 1px;
 	  background: skyblue;
 	  border-radius: 50%;
+	  -webkit-transition-property: top, bottom;
+  	-webkit-transition-duration: 0.05s;
+
 	}
 	.center {
 	  display: block;
@@ -85,14 +88,20 @@ page-meter-detail {
 	  margin-top: -30px;
 	  border: salmon 4px solid;
 	  border-radius: 50%;
+	  padding: 15px 5px;
+	    text-align: center;
+	    font-size: 16px;
+	}
+	.angle {
+		z-index: 10;
+	    position: relative;
 	}
 	.balanceItem {
 		height: calc(100vh - 55px);
 		padding: 10px 0;
 		width: 80%;
 	    float: right;
-	    border: 1px solid #ccc;
-	    border-right: none;
+	    border-left: 1px solid #ccc;	    
 	}
 
 }

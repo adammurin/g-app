@@ -87,12 +87,18 @@
     <feature name="Compass">
         <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
     </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="CordovaHttpPlugin">
+        <param name="android-package" value="com.synconset.cordovahttp.CordovaHttpPlugin" />
+    </feature>
     <feature name="Keyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.IonicKeyboard" />
     </feature>
-    <name>Gipsol</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Riant, s.r.o.</author>
+    <name>Gipsol - stavebné návody</name>
+    <description>Pracovné postupy pre vašu stavbu, výpočet spotreby materiálu a užitočné nástroje</description>
+    <author email="info@riant.sk" href="https://www.riant.sk/">Riant, s.r.o.</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

@@ -1,3 +1,14 @@
-page-item {
+page-prevodnik-detail {
+
+	.item-ios {
+		padding-left: 0;
+	}
+
+	.item.select {
+		padding-bottom: 5px;
+		button {
+			border-bottom: 2px solid #ddd;
+		}
+	}
 
 }

@@ -161,5 +161,23 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@^4.0.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "GEOLOCATION_USAGE_DESCRIPTION": "pre meranie vzdialenosti"
+    }
+  },
+  "cordova-plugin-advanced-http": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-advanced-http@^1.11.1"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

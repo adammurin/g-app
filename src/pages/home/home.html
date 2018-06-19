@@ -11,6 +11,31 @@
 
 <ion-content padding-top>
 
+  <ion-slides>
+    <ion-slide *ngFor="let letak of letaky" col-6>
+      <img src="{{ letak.url }}" (click)="openModal(letak.index)">
+    </ion-slide>
+  </ion-slides>
 
+  <ion-card padding>
+    
+    <div class="contactLinks">
+      <h3>Poradenstvo je vám k dispozícii počas pracovných dní od 07:00 do 15:30.</h3>
+      <a class="phone" href="tel:+421253419284">
+        <img class="icon call" src="assets/imgs/icons/phone_blue.png"/>
+          Zavolajte nám
+      </a><br>
+      <a class="mail" href="mailto:obchod@gipsol.sk">
+        <img class="icon mail" src="assets/imgs/icons/mail-blue.png"/>
+
+        Napíšte nám
+      </a>
+    </div>
+  </ion-card>
+
+  <ion-card padding>
+  	<h3 class="date">{{date}}</h3>
+	Sviatok má {{todayName}}
+  </ion-card>
 
 </ion-content>

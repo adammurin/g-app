@@ -8,107 +8,30 @@
 </ion-header>
 
 <ion-content padding-top>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div class="hours">
-          <h1 class="title">Kedy máme otvorené</h1>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-              </ion-col>
-              <ion-col>
-                <b>Sadrokartóny</b>
-              </ion-col>
-              <ion-col>
-                <b>Stavebniny</b>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Pondelok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Utorok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Streda
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Štvrtok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Piatok
-              </ion-col>
-              <ion-col>
-                07:00 - 17:00
-              </ion-col>
-              <ion-col>
-                07:00 - 15:30
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Sobota
-              </ion-col>
-              <ion-col>
-                07:00 - 13:00
-              </ion-col>
-              <ion-col>
-                zatvorené
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                Nedeľa
-              </ion-col>
-              <ion-col>
-                zatvorené
-              </ion-col>
-              <ion-col>
-                zatvorené
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div padding><h2>Zmerajte vzdialenosť dvoch bodov</h2></div>
+  <ion-card padding>
+
+    
+    <div *ngIf=" step != 1 " class="positions">
+      <h3>Začiatočná pozícia</h3>
+      LAT: {{ startCoordsLat }}<br>
+      LONG: {{ startCoordsLong }}
+    </div>
+    <div *ngIf=" step == 3 " class="positions">
+      <h3>Konečná pozícia</h3>
+      LAT: {{ endCoordsLat }}<br>
+      LONG: {{ endCoordsLong }}
+    </div>
+    <div *ngIf=" step == 3 " class="positions">
+      <h3>Vzdialenosť</h3>
+      {{ distance }} m
+    </div>
+    <div></div>
+    <button ion-button (click)="startTracker()" *ngIf=" step == 1 ">Označiť začiatok</button>
+    <button ion-button (click)="endTracker()" *ngIf=" step == 2 ">Označiť koniec</button>
+    <button ion-button (click)="resetTracker()" *ngIf=" step == 3 ">Nové meranie</button>
+  </ion-card>
+  <ion-card padding margin-top>
+    Meranie vzdialenosti pomocou GPS je iba orientačné, namerané hodnoty nemusia byť presné. K meraniu je potrebný priamy GPS signál.
+  </ion-card>
 </ion-content>

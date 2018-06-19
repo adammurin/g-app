@@ -15,6 +15,14 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+h1, h2, .card-md h1 {
+    color: #0093DD;
+}
+
+.card h2 {
+    color: #000;
+}
+
 .toolbar-ios {
     padding: 4px;
     min-height: 56px;
@@ -44,9 +52,11 @@
 }
 
 .card {
+/*
     margin: 3px;
-    border-radius: 2px;
     width: calc(100% - 6px);
+*/
+    border-radius: 2px;
     h2 {
         text-align: center;
         padding: 5px 25px;
@@ -145,13 +155,21 @@
     background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); /* Standard syntax (must be last) */
 }
 
+.scroll-zoom-wrapper {
+    background: #333;
+}
+
+.gallery-modal .close-button.button-ios {
+    top: 0 !important;
+}
+
 form {
 	.label.afterInput {
 		float: right;
 	    width: 30px;
 	    position: absolute;
 	    right: 0;
-	    bottom: -5px;
+	    bottom: 0;
 	}
     .item-md {
         padding-left: 0;
@@ -164,6 +182,10 @@ form {
     padding: 5px 8px;
     float: right;
     width: auto;
+}
+
+.label-ios[stacked] {
+    font-size: 1.6rem;
 }
 
 .bottomPos {

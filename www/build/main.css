@@ -25682,6 +25682,10 @@ h1, h2, .card-md h1 {
   color: #0093DD;
 }
 
+.card h2 {
+  color: #000;
+}
+
 .toolbar-ios {
   padding: 4px;
   min-height: 56px;
@@ -25712,9 +25716,11 @@ h1, h2, .card-md h1 {
 }
 
 .card {
-  margin: 3px;
+  /*
+    margin: 3px;
+    width: calc(100% - 6px);
+*/
   border-radius: 2px;
-  width: calc(100% - 6px);
 }
 
 .card h2 {
@@ -25819,12 +25825,20 @@ h1, h2, .card-md h1 {
   /* Standard syntax (must be last) */
 }
 
+.scroll-zoom-wrapper {
+  background: #333;
+}
+
+.gallery-modal .close-button.button-ios {
+  top: 0 !important;
+}
+
 form .label.afterInput {
   float: right;
   width: 30px;
   position: absolute;
   right: 0;
-  bottom: -5px;
+  bottom: 0;
 }
 
 form .item-md {
@@ -25839,6 +25853,10 @@ form .item-md {
   width: auto;
 }
 
+.label-ios[stacked] {
+  font-size: 1.6rem;
+}
+
 .bottomPos {
   position: absolute;
   bottom: 0;
@@ -25849,6 +25867,39 @@ form .item-md {
 ion-select {
   min-width: 180px;
   margin-right: 20px;
+}
+
+page-home .date {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+page-home .contactLinks {
+  text-align: center;
+}
+
+page-home .contactLinks a {
+  clear: both;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #0093DD;
+  font-weight: bold;
+  width: auto;
+  padding: 10px 10px 10px 40px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  text-align: center;
+}
+
+page-home .contactLinks a img {
+  max-width: 20px;
+  position: absolute;
+  left: 4px;
+}
+
+page-home ion-slides {
+  height: auto;
 }
 
 page-kontakty .rootRow {
@@ -25898,6 +25949,14 @@ page-kontakty .rowInfo ion-col {
 page-kontakty .rowToggle .desc {
   font-weight: bold;
   padding: 0 0 15px;
+}
+
+page-letaky .letakItem {
+  float: left;
+}
+
+page-letaky .letakItem:nth-child(2n+1) {
+  clear: both;
 }
 
 page-meter-detail .grid, page-meter-detail .col {
@@ -25981,11 +26040,13 @@ page-meter-detail .ball {
   display: block;
   width: 50px;
   height: 50px;
-  position: relative;
-  margin-left: 1px;
+  position: absolute;
+  margin-left: -4px;
   margin-top: 1px;
   background: skyblue;
   border-radius: 50%;
+  -webkit-transition-property: top, bottom;
+  -webkit-transition-duration: 0.05s;
 }
 
 page-meter-detail .center {
@@ -25999,6 +26060,14 @@ page-meter-detail .center {
   margin-top: -30px;
   border: salmon 4px solid;
   border-radius: 50%;
+  padding: 15px 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+page-meter-detail .angle {
+  z-index: 10;
+  position: relative;
 }
 
 page-meter-detail .balanceItem {
@@ -26006,12 +26075,13 @@ page-meter-detail .balanceItem {
   padding: 10px 0;
   width: 80%;
   float: right;
-  border: 1px solid #ccc;
-  border-right: none;
+  border-left: 1px solid #ccc;
 }
 
 page-nastroje .card {
   height: 100%;
+  margin: 3px;
+  width: calc(100% - 6px);
 }
 
 page-predajna #map_canvas {
@@ -26020,6 +26090,53 @@ page-predajna #map_canvas {
   min-height: 150px;
 }
 
+page-predajna #map {
+  height: 260px;
+}
+
 page-predajna .scroll-content, page-predajna .content-ios {
   /*background: transparent;*/
+}
+
+page-prevodnik-detail .item-ios {
+  padding-left: 0;
+}
+
+page-prevodnik-detail .item.select {
+  padding-bottom: 5px;
+}
+
+page-prevodnik-detail .item.select button {
+  border-bottom: 2px solid #ddd;
+}
+
+page-vypocty-detail .item-ios {
+  padding-left: 0;
+  max-width: 200px;
+}
+
+page-vypocty-detail .card-header-ios {
+  font-size: 1.7em;
+}
+
+page-vypocty-detail .item-ios.item-label-stacked .text-input, page-vypocty-detail .item-ios.item-label-floating .text-input {
+  margin-right: 50px;
+  width: calc(100% - 50px);
+}
+
+page-vypocty-detail .button-ios {
+  margin-top: 20px;
+}
+
+page-vypocty-detail .grid, page-vypocty-detail .col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+page-vzdialenost-detail .card-ios h3 {
+  font-weight: bold;
+}
+
+page-vzdialenost-detail .positions {
+  padding: 0 0 15px;
 }

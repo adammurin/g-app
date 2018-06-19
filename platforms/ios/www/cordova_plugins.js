@@ -9,6 +9,30 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-device-orientation.CompassError",
+    "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+    "pluginId": "cordova-plugin-device-orientation",
+    "clobbers": [
+      "CompassError"
+    ]
+  },
+  {
+    "id": "cordova-plugin-device-orientation.CompassHeading",
+    "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+    "pluginId": "cordova-plugin-device-orientation",
+    "clobbers": [
+      "CompassHeading"
+    ]
+  },
+  {
+    "id": "cordova-plugin-device-orientation.compass",
+    "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+    "pluginId": "cordova-plugin-device-orientation",
+    "clobbers": [
+      "navigator.compass"
+    ]
+  },
+  {
     "id": "cordova-plugin-file.DirectoryEntry",
     "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
     "pluginId": "cordova-plugin-file",
@@ -203,6 +227,38 @@ module.exports = [
     "pluginId": "cordova-plugin-flashlight",
     "clobbers": [
       "window.plugins.flashlight"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.Coordinates",
+    "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "Coordinates"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.PositionError",
+    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "PositionError"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.Position",
+    "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "Position"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.geolocation",
+    "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "navigator.geolocation"
     ]
   },
   {
@@ -434,27 +490,111 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-device-orientation.CompassError",
-    "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
-    "pluginId": "cordova-plugin-device-orientation",
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
     "clobbers": [
-      "CompassError"
+      "cordova.InAppBrowser.open",
+      "window.open"
     ]
   },
   {
-    "id": "cordova-plugin-device-orientation.CompassHeading",
-    "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
-    "pluginId": "cordova-plugin-device-orientation",
+    "id": "cordova-plugin-ionic-keyboard.keyboard",
+    "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
+    "pluginId": "cordova-plugin-ionic-keyboard",
     "clobbers": [
-      "CompassHeading"
+      "window.Keyboard"
     ]
   },
   {
-    "id": "cordova-plugin-device-orientation.compass",
-    "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
-    "pluginId": "cordova-plugin-device-orientation",
+    "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
+    "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
+    "pluginId": "cordova-plugin-ionic-webview",
     "clobbers": [
-      "navigator.compass"
+      "cordova.exec"
+    ]
+  },
+  {
+    "id": "cordova-plugin-qrscanner.QRScanner",
+    "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
+    "pluginId": "cordova-plugin-qrscanner",
+    "clobbers": [
+      "QRScanner"
+    ]
+  },
+  {
+    "id": "cordova-plugin-splashscreen.SplashScreen",
+    "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+    "pluginId": "cordova-plugin-splashscreen",
+    "clobbers": [
+      "navigator.splashscreen"
+    ]
+  },
+  {
+    "id": "cordova-plugin-x-toast.Toast",
+    "file": "plugins/cordova-plugin-x-toast/www/Toast.js",
+    "pluginId": "cordova-plugin-x-toast",
+    "clobbers": [
+      "window.plugins.toast"
+    ]
+  },
+  {
+    "id": "cordova-sqlite-storage.SQLitePlugin",
+    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+    "pluginId": "cordova-sqlite-storage",
+    "clobbers": [
+      "SQLitePlugin"
+    ]
+  },
+  {
+    "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+    "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+    "pluginId": "phonegap-plugin-barcodescanner",
+    "clobbers": [
+      "cordova.plugins.barcodeScanner"
+    ]
+  },
+  {
+    "id": "cordova-plugin-advanced-http.lodash",
+    "file": "plugins/cordova-plugin-advanced-http/www/lodash.js",
+    "pluginId": "cordova-plugin-advanced-http"
+  },
+  {
+    "id": "cordova-plugin-advanced-http.tough-cookie",
+    "file": "plugins/cordova-plugin-advanced-http/www/umd-tough-cookie.js",
+    "pluginId": "cordova-plugin-advanced-http"
+  },
+  {
+    "id": "cordova-plugin-advanced-http.messages",
+    "file": "plugins/cordova-plugin-advanced-http/www/messages.js",
+    "pluginId": "cordova-plugin-advanced-http"
+  },
+  {
+    "id": "cordova-plugin-advanced-http.local-storage-store",
+    "file": "plugins/cordova-plugin-advanced-http/www/local-storage-store.js",
+    "pluginId": "cordova-plugin-advanced-http"
+  },
+  {
+    "id": "cordova-plugin-advanced-http.cookie-handler",
+    "file": "plugins/cordova-plugin-advanced-http/www/cookie-handler.js",
+    "pluginId": "cordova-plugin-advanced-http"
+  },
+  {
+    "id": "cordova-plugin-advanced-http.angular-integration",
+    "file": "plugins/cordova-plugin-advanced-http/www/angular-integration.js",
+    "pluginId": "cordova-plugin-advanced-http"
+  },
+  {
+    "id": "cordova-plugin-advanced-http.helpers",
+    "file": "plugins/cordova-plugin-advanced-http/www/helpers.js",
+    "pluginId": "cordova-plugin-advanced-http"
+  },
+  {
+    "id": "cordova-plugin-advanced-http.http",
+    "file": "plugins/cordova-plugin-advanced-http/www/advanced-http.js",
+    "pluginId": "cordova-plugin-advanced-http",
+    "clobbers": [
+      "cordova.plugin.http"
     ]
   }
 ];
@@ -465,12 +605,24 @@ module.exports.metadata =
   "cordova-plugin-android-support-v4": "21.0.1",
   "cordova-plugin-compat": "1.2.0",
   "cordova-plugin-device": "2.0.1",
+  "cordova-plugin-device-orientation": "2.0.1",
   "cordova-plugin-file": "6.0.1",
   "cordova-plugin-file-transfer": "1.7.1",
   "cordova-plugin-flashlight": "3.2.0",
+  "cordova-plugin-geolocation": "4.0.1",
   "cordova-plugin-googlemaps": "2.3.4",
   "cordova-plugin-gyroscope": "0.1.4",
-  "cordova-plugin-device-orientation": "2.0.1"
+  "cordova-plugin-inappbrowser": "3.0.0",
+  "cordova-plugin-ionic-keyboard": "2.0.5",
+  "cordova-plugin-ionic-webview": "1.1.16",
+  "cordova-plugin-swift-support": "3.1.1",
+  "cordova-plugin-qrscanner": "2.5.0",
+  "cordova-plugin-splashscreen": "5.0.2",
+  "cordova-plugin-whitelist": "1.3.3",
+  "cordova-plugin-x-toast": "2.6.2",
+  "cordova-sqlite-storage": "2.2.1",
+  "phonegap-plugin-barcodescanner": "7.1.2",
+  "cordova-plugin-advanced-http": "1.11.1"
 };
 // BOTTOM OF METADATA
 });

@@ -15,7 +15,7 @@
       <ion-card-content>
         <form [formGroup]="formOne" (ngSubmit)="logForm()">
           <div>
-            <ion-item>
+            <ion-item class="select">
               <ion-label stacked>Zvoľte, ktorú veličinu chcete prevádzať</ion-label>
               <ion-select formControlName="category" [(ngModel)]="category" interface="popover" (ionChange)="categorySelected()">
                 <ion-option *ngFor="let category of categories" [value]="category.key">
@@ -31,7 +31,7 @@
       <ion-card-content>
 
         <form [formGroup]="formTwo" (ngSubmit)="convert()">
-          <ion-item>
+          <ion-item class="select">
               <ion-select formControlName="convertFrom" [(ngModel)]="convertFrom" interface="popover" (ionChange)="valueSelected()">
                 <ion-option *ngFor="let item of items" [value]="item.rate">
                   {{item.name}}
@@ -39,7 +39,7 @@
               </ion-select>
             <ion-input type="text" formControlName="convertFromVal" [(ngModel)]="convertFromVal" (input)="valueSelected()"></ion-input>
           </ion-item>
-          <ion-item>
+          <ion-item class="select">
               <ion-select formControlName="convertTo" [(ngModel)]="convertTo" interface="popover" (ionChange)="valueSelected()">
                 <ion-option *ngFor="let item of items" [value]="item.rate">
                   {{item.name}}

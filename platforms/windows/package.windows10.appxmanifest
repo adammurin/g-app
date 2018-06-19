@@ -3,10 +3,10 @@
     <Identity Name="io.gipsol.app" Publisher="CN=$username$" Version="0.0.1.0" />
     <mp:PhoneIdentity PhoneProductId="d4d5bd40-4ed8-11e8-bbb8-67c3b22ea4f6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
     <Properties>
-        <DisplayName>Gipsol</DisplayName>
+        <DisplayName>Gipsol - stavebné návody</DisplayName>
         <PublisherDisplayName>Riant, s.r.o.</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
-        <Description>An awesome Ionic/Cordova app.</Description>
+        <Description>Pracovné postupy pre vašu stavbu, výpočet spotreby materiálu a užitočné nástroje</Description>
     </Properties>
     <Dependencies>
         <TargetDeviceFamily MaxVersionTested="10.0.10240.0" MinVersion="10.0.10240.0" Name="Windows.Universal" />
@@ -16,7 +16,7 @@
     </Resources>
     <Applications>
         <Application Id="io.gipsol.app" StartPage="ms-appx-web://io.gipsol.app/www/index.html">
-            <uap:VisualElements BackgroundColor="#464646" Description="An awesome Ionic/Cordova app." DisplayName="Gipsol" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+            <uap:VisualElements BackgroundColor="#464646" Description="Pracovné postupy pre vašu stavbu, výpočet spotreby materiálu a užitočné nástroje" DisplayName="Gipsol - stavebné návody" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
                 <uap:SplashScreen Image="images\splashscreen.png" />
                 <uap:DefaultTile ShortName="ionic" Square310x310Logo="images\Square310x310Logo.png" Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png" />
                 <uap:InitialRotationPreference>
@@ -33,5 +33,6 @@
     <Capabilities>
         <Capability Name="internetClient" />
         <DeviceCapability Name="webcam" />
+        <DeviceCapability Name="location" />
     </Capabilities>
 </Package>

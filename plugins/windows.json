@@ -57,6 +57,12 @@
     },
     "cordova-plugin-device-orientation": {
       "PACKAGE_NAME": "Gipsol"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "Gipsol"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "Gipsol"
     }
   },
   "dependent_plugins": {

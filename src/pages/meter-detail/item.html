@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Meter</ion-title>
+    <ion-title>Meter, baterka, vodováha</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -34,10 +34,12 @@
       <ion-col>
         <div class="balanceItem">
           <div class="inner">
-            {{this.topPos}}
-
             <div class="center">
+              <div class="angle">
+                {{ this.angle }}°
+              </div>
               <div class="ball" [ngStyle]="{'top.px': this.topPos}">
+                
               </div>
             </div>
           </div>

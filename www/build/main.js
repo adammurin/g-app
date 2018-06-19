@@ -1,12 +1,12 @@
 webpackJsonp([3],{
 
-/***/ 101:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostupyDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var PostupyDetailPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-postupy-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy-detail/postupy-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-slides pager>\n\n    <ion-slide *ngFor="let slide of slides">\n      <img src="./assets/imgs/{{slide.image}}">\n      <p class="slide-title">{{slide.text}}</p>\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy-detail/postupy-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], PostupyDetailPage);
     return PostupyDetailPage;
 }());
@@ -47,15 +47,16 @@ var PostupyDetailPage = (function () {
 
 /***/ }),
 
-/***/ 102:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VypoctyDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vypocty_service_vypocty_service__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_email_service_email_service__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(17);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -69,6 +70,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the VypoctyDetailPage page.
  *
@@ -76,13 +78,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var VypoctyDetailPage = (function () {
-    function VypoctyDetailPage(navCtrl, navParams, vypoctyService, formBuilder) {
+    function VypoctyDetailPage(navCtrl, navParams, emailService, formBuilder, http) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.vypoctyService = vypoctyService;
+        this.emailService = emailService;
         this.formBuilder = formBuilder;
+        this.http = http;
         this.results = [];
         this.showResults = false;
+        this.sendResults = false;
         this.formOne = this.formBuilder.group({
             width: [''],
             height: [''],
@@ -92,6 +96,13 @@ var VypoctyDetailPage = (function () {
             width: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
             height: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
             area: [''],
+        });
+        this.formQuote = this.formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            message: [''],
+            content: [''],
+            //terms: ['', Validators.required],
+            terms: [''],
         });
     }
     VypoctyDetailPage_1 = VypoctyDetailPage;
@@ -119,6 +130,39 @@ var VypoctyDetailPage = (function () {
     VypoctyDetailPage.prototype.clearInputs = function () {
         this.width = '';
         this.height = '';
+    };
+    VypoctyDetailPage.prototype.sendFormInit = function () {
+        this.sendResults = true;
+    };
+    VypoctyDetailPage.prototype.sendNotificationEmail = function () {
+        var _this = this;
+        this.quoteFormData = JSON.stringify({
+            "personalizations": [
+                {
+                    "recipient": "admin@riant.sk"
+                }
+            ],
+            "from": {
+                "fromEmail": "app@gipsol.sk",
+                "fromName": "Gipsol iOS Aplikacia"
+            },
+            "subject": "Welcome to Pepipost",
+            "content": "Hi, this is my first trial mail",
+            "settings": {
+                "footer": 1,
+                "clicktrack": 0,
+                "opentrack": 1,
+                "unsubscribe": 0,
+            },
+            "replyToId": "qwer@ppoi.com"
+        });
+        this.emailService.sendCalucation(this.quoteFormData).then(function (result) {
+            console.log(_this.quoteFormData);
+            console.log(result);
+        }, function (err) {
+            console.log(_this.quoteFormData);
+            console.log(err);
+        });
     };
     VypoctyDetailPage.prototype.logForm = function () {
         this.results = [];
@@ -293,10 +337,10 @@ var VypoctyDetailPage = (function () {
     };
     VypoctyDetailPage = VypoctyDetailPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-vypocty-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty-detail/vypocty-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-card *ngIf="showResults == false">\n    <ion-card-header>\n      Výpočet\n    </ion-card-header>\n      <ion-card-content>\n        <form *ngIf=" calculation_type == 1 " [formGroup]="formOne" (ngSubmit)="logForm()">\n          <div >\n            <ion-item>\n              <ion-label stacked>Zadajte plochu</ion-label>\n              <ion-input type="number" formControlName="area" placeholder="" [(ngModel)]="shadowArea" (input)="clearInputs()"></ion-input><ion-label class="afterInput">m<sup>2</sup></ion-label>\n            </ion-item>\n            <h3>alebo</h3>\n            <ion-item>\n              <ion-label stacked>{{this.widthLabel}}</ion-label>\n              <ion-input type="number" formControlName="width" [(ngModel)]="width" (input)="calcArea($event.target.value)"></ion-input>\n              <ion-label class="afterInput">m</ion-label>\n            </ion-item>\n            <ion-item>\n              <ion-label stacked>{{this.heightLabel}}</ion-label>\n              <ion-input type="number" formControlName="height" [(ngModel)]="height" (input)="calcArea($event.target.value)"></ion-input>\n              <ion-label class="afterInput">m</ion-label>\n            </ion-item>\n            \n            <button ion-button type="submit" [disabled]="!formOne.valid">Vypočítať</button>\n          </div>\n        </form>\n\n        <form *ngIf=" calculation_type == 2 " [formGroup]="formTwo" (ngSubmit)="logForm()">\n          <ion-item hidden>\n              <ion-input type="number" formControlName="area" placeholder="" [(ngModel)]="shadowArea" (input)="clearInputs()"></ion-input>\n            </ion-item>\n          <ion-item>\n            <ion-label stacked>{{this.widthLabel}}</ion-label>\n            <ion-input type="number" formControlName="width" [(ngModel)]="width" (input)="calcArea($event.target.value)"></ion-input>\n            <ion-label class="afterInput">m</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-label stacked>{{this.heightLabel}}</ion-label>\n            <ion-input type="number" formControlName="height" [(ngModel)]="height" (input)="calcArea($event.target.value)"></ion-input>\n            <ion-label class="afterInput">m</ion-label>\n          </ion-item>\n          \n          <button ion-button type="submit" [disabled]="!formTwo.valid">Vypočítať</button>\n        </form>\n      </ion-card-content>\n    </ion-card>\n    <ion-card *ngIf="showResults == true">\n      <ion-card-header>\n        Výpočet\n      </ion-card-header>\n      <ion-card-content>\n        <ion-grid>\n          <ion-row>\n            <ion-col class="fadedText">\n              Na {{this.shadowArea}} m<sup>2</sup> budete potrebovať\n            </ion-col>\n          </ion-row>\n          <ion-row *ngFor="let result of results">\n            <ion-col col-9>\n              {{result.name}}\n            </ion-col>\n            <ion-col col-3>\n              {{result.value}} <span [innerHTML]="result.unit"></span>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-card-content>\n  </ion-card>\n</ion-content>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty-detail/vypocty-detail.html"*/,
-            providers: [__WEBPACK_IMPORTED_MODULE_3__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */]]
+            selector: 'page-vypocty-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty-detail/vypocty-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-card padding *ngIf="showResults == false">\n    <ion-card-header>\n      Výpočet\n    </ion-card-header>\n      <ion-card-content>\n        <form *ngIf=" calculation_type == 1 " [formGroup]="formOne" (ngSubmit)="logForm()">\n          <div >\n            <ion-item>\n              <ion-label stacked>Zadajte plochu</ion-label>\n              <ion-input type="number" formControlName="area" placeholder="" [(ngModel)]="shadowArea" (input)="clearInputs()"></ion-input><ion-label class="afterInput">m<sup>2</sup></ion-label>\n            </ion-item>\n            <h3>alebo</h3>\n            <ion-item>\n              <ion-label stacked>{{this.widthLabel}}</ion-label>\n              <ion-input type="number" formControlName="width" [(ngModel)]="width" (input)="calcArea($event.target.value)"></ion-input>\n              <ion-label class="afterInput">m</ion-label>\n            </ion-item>\n            <ion-item>\n              <ion-label stacked>{{this.heightLabel}}</ion-label>\n              <ion-input type="number" formControlName="height" [(ngModel)]="height" (input)="calcArea($event.target.value)"></ion-input>\n              <ion-label class="afterInput">m</ion-label>\n            </ion-item>\n            \n            <button ion-button type="submit" [disabled]="!formOne.valid">Vypočítať</button>\n          </div>\n        </form>\n\n        <form *ngIf=" calculation_type == 2 " [formGroup]="formTwo" (ngSubmit)="logForm()">\n          <ion-item hidden>\n              <ion-input type="number" formControlName="area" placeholder="" [(ngModel)]="shadowArea" (input)="clearInputs()"></ion-input>\n            </ion-item>\n          <ion-item>\n            <ion-label stacked>{{this.widthLabel}}</ion-label>\n            <ion-input type="number" formControlName="width" [(ngModel)]="width" (input)="calcArea($event.target.value)"></ion-input>\n            <ion-label class="afterInput">m</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-label stacked>{{this.heightLabel}}</ion-label>\n            <ion-input type="number" formControlName="height" [(ngModel)]="height" (input)="calcArea($event.target.value)"></ion-input>\n            <ion-label class="afterInput">m</ion-label>\n          </ion-item>\n          \n          <button ion-button type="submit" [disabled]="!formTwo.valid">Vypočítať</button>\n        </form>\n      </ion-card-content>\n    </ion-card>\n    <ion-card padding *ngIf="showResults == true">\n      <ion-card-header>\n        Výpočet\n      </ion-card-header>\n      <ion-card-content>\n        <form [formGroup]="formQuote" (ngSubmit)="sendNotificationEmail()">\n        <ion-grid>\n          <ion-row>\n            <ion-col class="fadedText">\n              Na {{this.shadowArea}} m<sup>2</sup> budete potrebovať\n            </ion-col>\n          </ion-row>\n          <ion-row *ngFor="let result of results">\n            <ion-col col-9>\n              {{result.name}}\n            </ion-col>\n            <ion-col col-3>\n              {{result.value}} <span [innerHTML]="result.unit"></span>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <button ion-button type="button" (click)="sendFormInit()">Chcem cenovú kalkuláciu</button>\n            </ion-col>\n          </ion-row>\n          <ion-row *ngIf="sendResults == true">\n            <ion-col>\n              <ion-label stacked>Email pre zaslanie cenovej ponuky</ion-label>\n              <ion-input type="text" formControlName="email" [(ngModel)]="email"></ion-input>\n            </ion-col>\n          </ion-row>\n          <ion-row *ngIf="sendResults == true">\n            <ion-col>\n              <ion-label stacked>Správa</ion-label>\n              <ion-input type="textarea" formControlName="message" [(ngModel)]="message"></ion-input>\n            </ion-col>\n          </ion-row>\n          <ion-row *ngIf="sendResults == true">\n            <ion-col>\n              <button ion-button type="submit" [disabled]="!formQuote.valid">Odoslať</button>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </form>\n      </ion-card-content>\n  </ion-card>\n</ion-content>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty-detail/vypocty-detail.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_3__providers_email_service_email_service__["a" /* EmailService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_email_service_email_service__["a" /* EmailService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClient */]])
     ], VypoctyDetailPage);
     return VypoctyDetailPage;
     var VypoctyDetailPage_1;
@@ -306,7 +350,7 @@ var VypoctyDetailPage = (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 120:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -319,24 +363,24 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 115;
+webpackEmptyAsyncContext.id = 120;
 
 /***/ }),
 
-/***/ 157:
+/***/ 163:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/nastroje-detail/item.module": [
-		299,
+		314,
 		2
 	],
 	"../pages/postupy-detail/postupy-detail.module": [
-		300,
+		315,
 		1
 	],
 	"../pages/vypocty-detail/vypocty-detail.module": [
-		301,
+		316,
 		0
 	]
 };
@@ -351,17 +395,109 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 157;
+webpackAsyncContext.id = 163;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 158:
+/***/ 206:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VypoctyService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(78);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_names_service_names_service__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_letaky_service_letaky_service__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_gallery_modal__ = __webpack_require__(102);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var HomePage = (function () {
+    function HomePage(navCtrl, namesService, letakyService, modalCtrl, platform) {
+        this.navCtrl = navCtrl;
+        this.namesService = namesService;
+        this.letakyService = letakyService;
+        this.modalCtrl = modalCtrl;
+        this.platform = platform;
+        this.getNames();
+        this.getLetaky();
+    }
+    HomePage.prototype.getNames = function () {
+        var _this = this;
+        this.namesService.getNames()
+            .then(function (data) {
+            _this.names = data;
+            _this.setDateAndName();
+        });
+    };
+    HomePage.prototype.getLetaky = function () {
+        var _this = this;
+        this.platform.ready().then(function () {
+            _this.letakyService.getLetaky()
+                .then(function (data) {
+                _this.letaky = data;
+                _this.letaky = _this.letaky.actions;
+                _this.photos = _this.letaky;
+                _this.setupModal();
+            });
+        });
+    };
+    HomePage.prototype.setDateAndName = function () {
+        var today = new Date();
+        var month = today.getMonth();
+        var day = today.getDate();
+        this.date = today.toLocaleDateString("sk-SK");
+        this.todayName = this.names[month][day];
+    };
+    HomePage.prototype.setupModal = function () {
+        var i;
+        for (i = 0; i < this.photos.length; i++) {
+            this.photos[i].url = this.photos[i]['img_url'];
+            this.photos[i].index = i;
+            delete this.photos[i].img_url;
+        }
+    };
+    HomePage.prototype.openModal = function (index) {
+        this.modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4_ionic_gallery_modal__["a" /* GalleryModal */], {
+            photos: this.photos,
+            initialSlide: index
+        });
+        this.modal.present();
+    };
+    HomePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-home',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n\n  <ion-slides>\n    <ion-slide *ngFor="let letak of letaky" col-6>\n      <img src="{{ letak.url }}" (click)="openModal(letak.index)">\n    </ion-slide>\n  </ion-slides>\n\n  <ion-card padding>\n    \n    <div class="contactLinks">\n      <h3>Poradenstvo je vám k dispozícii počas pracovných dní od 07:00 do 15:30.</h3>\n      <a class="phone" href="tel:+421253419284">\n        <img class="icon call" src="assets/imgs/icons/phone_blue.png"/>\n          Zavolajte nám\n      </a><br>\n      <a class="mail" href="mailto:obchod@gipsol.sk">\n        <img class="icon mail" src="assets/imgs/icons/mail-blue.png"/>\n\n        Napíšte nám\n      </a>\n    </div>\n  </ion-card>\n\n  <ion-card padding>\n  	<h3 class="date">{{date}}</h3>\n	Sviatok má {{todayName}}\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/home/home.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_2__providers_names_service_names_service__["a" /* NamesService */], __WEBPACK_IMPORTED_MODULE_3__providers_letaky_service_letaky_service__["a" /* LetakyService */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_names_service_names_service__["a" /* NamesService */], __WEBPACK_IMPORTED_MODULE_3__providers_letaky_service_letaky_service__["a" /* LetakyService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]])
+    ], HomePage);
+    return HomePage;
+}());
+
+//# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 207:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LetakyService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -374,20 +510,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/*
-  Generated class for the VypoctyServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var VypoctyService = (function () {
-    function VypoctyService(http) {
+var LetakyService = (function () {
+    function LetakyService(http) {
         this.http = http;
-        //apiUrl = 'http://127.0.0.1:8000';
-        this.apiUrl = './assets/json/vypocty.json';
-        //console.log('Hello PostupyService Provider');
+        this.apiUrl = 'https://gipsol.sk/app/letaky.json';
     }
-    VypoctyService.prototype.getVypocty = function () {
+    LetakyService.prototype.getLetaky = function () {
         var _this = this;
         return new Promise(function (resolve) {
             _this.http.get(_this.apiUrl).subscribe(function (data) {
@@ -397,24 +525,26 @@ var VypoctyService = (function () {
             });
         });
     };
-    VypoctyService = __decorate([
+    LetakyService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], VypoctyService);
-    return VypoctyService;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
+    ], LetakyService);
+    return LetakyService;
 }());
 
-//# sourceMappingURL=vypocty-service.js.map
+//# sourceMappingURL=letaky-service.js.map
 
 /***/ }),
 
-/***/ 202:
+/***/ 208:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LetakyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_letaky_service_letaky_service__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_gallery_modal__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -426,32 +556,64 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var HomePage = (function () {
-    function HomePage(navCtrl) {
+
+
+
+var LetakyPage = (function () {
+    function LetakyPage(navCtrl, letakyService, modalCtrl) {
         this.navCtrl = navCtrl;
+        this.letakyService = letakyService;
+        this.modalCtrl = modalCtrl;
+        this.getLetaky();
     }
-    HomePage = __decorate([
+    LetakyPage.prototype.getLetaky = function () {
+        var _this = this;
+        this.letakyService.getLetaky()
+            .then(function (data) {
+            _this.letaky = data;
+            _this.letaky = _this.letaky.actions;
+            _this.photos = _this.letaky;
+            _this.setupModal();
+        });
+    };
+    LetakyPage.prototype.setupModal = function () {
+        var i;
+        for (i = 0; i < this.photos.length; i++) {
+            this.photos[i].url = this.photos[i]['img_url'];
+            this.photos[i].index = i;
+            delete this.photos[i].img_url;
+        }
+    };
+    LetakyPage.prototype.openModal = function (index) {
+        this.modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3_ionic_gallery_modal__["a" /* GalleryModal */], {
+            photos: this.photos,
+            initialSlide: index
+        });
+        this.modal.present();
+    };
+    LetakyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/home/home.html"*/
+            selector: 'page-letaky',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/letaky/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Akciové letáky</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n\n    <div class="letakItem" *ngFor="let letak of letaky" col-6>\n      <img src="{{ letak.url }}" (click)="openModal(letak.index)">\n    </div>\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/letaky/list.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_2__providers_letaky_service_letaky_service__["a" /* LetakyService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
-    ], HomePage);
-    return HomePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_letaky_service_letaky_service__["a" /* LetakyService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]])
+    ], LetakyPage);
+    return LetakyPage;
 }());
 
-//# sourceMappingURL=home.js.map
+//# sourceMappingURL=list.js.map
 
 /***/ }),
 
-/***/ 203:
+/***/ 209:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VypoctyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vypocty_service_vypocty_service__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vypocty_detail_vypocty_detail__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vypocty_service_vypocty_service__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vypocty_detail_vypocty_detail__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -504,7 +666,7 @@ var VypoctyPage = (function () {
             selector: 'page-vypocty',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Výpočet spotreby materiálu</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col *ngFor="let vypocet of vypocty" (click)="viewItem(vypocet)" col-6>\n      <div class="cover-image" [style.background-image]="\'url(./assets/imgs/\' + vypocet.hlavny_obrazok + \')\'">\n      <h2 class="title">{{vypocet.nazov}}</h2>\n      </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vypocty/list.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_vypocty_service_vypocty_service__["a" /* VypoctyService */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]])
     ], VypoctyPage);
     return VypoctyPage;
 }());
@@ -513,15 +675,15 @@ var VypoctyPage = (function () {
 
 /***/ }),
 
-/***/ 204:
+/***/ 210:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostupyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__postupy_detail_postupy_detail__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__postupy_detail_postupy_detail__ = __webpack_require__(106);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -547,7 +709,6 @@ var PostupyPage = (function () {
         this.postupyService.getPostupy()
             .then(function (data) {
             _this.postupy = data;
-            console.log(_this.postupy);
         });
     };
     PostupyPage.prototype.viewItem = function (postup) {
@@ -560,7 +721,7 @@ var PostupyPage = (function () {
             selector: 'page-postupy',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Pracovné postupy</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col *ngFor="let postup of postupy" (click)="viewItem(postup)" col-6>\n      <div class="cover-image" [style.background-image]="\'url(./assets/imgs/\' + postup.hlavny_obrazok + \')\'">\n      <h2 class="title">{{postup.nazov}}</h2>\n      </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/postupy/list.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__["a" /* PostupyService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__["a" /* PostupyService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_postupy_service_postupy_service__["a" /* PostupyService */]])
     ], PostupyPage);
     return PostupyPage;
 }());
@@ -569,17 +730,17 @@ var PostupyPage = (function () {
 
 /***/ }),
 
-/***/ 205:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NastrojePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__meter_detail_item__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__prevodnik_detail_item__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vzdialenost_detail_item__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__qr_detail_item__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__meter_detail_item__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__prevodnik_detail_item__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vzdialenost_detail_item__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__qr_detail_item__ = __webpack_require__(218);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -616,7 +777,7 @@ var NastrojePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-nastroje',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Nástroje</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col (click)="viewMeter()" col-6>\n        <ion-card>\n          <img src="./assets/imgs/nastroje/meter.png">\n          <h2 class="title">Meter, baterka, vodováha</h2>\n        </ion-card>\n      </ion-col>\n      <ion-col (click)="viewPrevodnik()" col-6>\n        <ion-card>\n          <img src="./assets/imgs/nastroje/prevodnik.png">\n          <h2 class="title">Prevodník jednotiek</h2>\n        </ion-card>\n      </ion-col>\n      <ion-col (click)="viewVzdialenost()" col-6>\n        <ion-card>\n          <img src="./assets/imgs/nastroje/vzdialenost.png">\n          <h2 class="title">Meranie vzdialenosti</h2>\n        </ion-card>\n      </ion-col>\n      <ion-col (click)="viewQr()" col-6>\n        <ion-card>\n          <img src="./assets/imgs/nastroje/qr.png">\n          <h2 class="title">Čítačka QR kódov</h2>\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje/list.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], NastrojePage);
     return NastrojePage;
 }());
@@ -625,16 +786,16 @@ var NastrojePage = (function () {
 
 /***/ }),
 
-/***/ 206:
+/***/ 212:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MeterDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_flashlight__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_gyroscope__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_gyronorm__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_flashlight__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_gyroscope__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_gyronorm__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_gyronorm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_gyronorm__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -659,15 +820,16 @@ var MeterDetailPage = (function () {
         this.flashLightOn = false;
         this.rulers = [];
         this.labels = [];
-        this.topPos = 100;
+        this.topPos = 0;
     }
     MeterDetailPage.prototype.ionViewDidLoad = function () {
         //this.turnOnFlashlight();
         this.setupRuler();
-        this.spiritLevelInit(this.topPos);
+        this.spiritLevelInit(1);
     };
     MeterDetailPage.prototype.ionViewDidLeave = function () {
         this.flashlight.switchOff();
+        this.spiritLevelInit(2);
     };
     MeterDetailPage.prototype.setupRuler = function () {
         this.screenHeight = (((window.screen.height - 135) * window.devicePixelRatio * 0.79) / (window.devicePixelRatio * 5));
@@ -689,43 +851,61 @@ var MeterDetailPage = (function () {
         }
         this.flashLightOn = !this.flashLightOn;
     };
-    MeterDetailPage.prototype.spiritLevelInit = function () {
+    MeterDetailPage.prototype.spiritLevelInit = function (action) {
+        var args = {
+            frequency: 100,
+            gravityNormalized: true,
+            orientationBase: __WEBPACK_IMPORTED_MODULE_4_gyronorm___default.a.GAME,
+            decimalCount: 2,
+            logger: null,
+            screenAdjusted: false // ( If set to true it will return screen adjusted values. )
+        };
         var gn = new __WEBPACK_IMPORTED_MODULE_4_gyronorm___default.a();
-        var mb = this.moveBall();
-        gn.init().then(function (mb) {
-            console.log(mb);
-            gn.start(function (data) {
+        var self = this;
+        if (action == 1) {
+            gn.init(args).then(function () {
+                gn.start(function (data) {
+                    self.tempPos = data.do.beta * Math.round(self.screenHeight / 15) * (-1);
+                    self.angle = Math.round(data.do.beta * 10) / 10;
+                    if (self.tempPos > (window.screen.height - 85) / 2) {
+                        self.topPos = Math.round((window.screen.height - 85) / 2);
+                    }
+                    else if ((self.tempPos * (-1)) > (window.screen.height - 135) / 2) {
+                        self.topPos = Math.round((window.screen.height - 135) / -2);
+                    }
+                    else {
+                        self.topPos = self.tempPos;
+                    }
+                });
+            }).catch(function (e) {
+                console.log(e);
+                // Catch if the DeviceOrientation or DeviceMotion is not supported by the browser or device
             });
-        }).catch(function (e, mb) {
-            console.log(e);
-            // Catch if the DeviceOrientation or DeviceMotion is not supported by the browser or device
-            console.log(mb);
-        });
-    };
-    MeterDetailPage.prototype.moveBall = function () {
-        console.log(this.topPos);
+        }
+        else {
+            gn.end();
+        }
     };
     MeterDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-meter-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/meter-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meter</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div class="sideMeter">\n          <div class="inner">\n            <div class="rulers">\n              <div *ngFor="let ruler of rulers" class="ruler">\n              </div>\n            </div>\n            <div class="labels">\n              <div *ngFor="let label of labels" class="label">\n                {{label}}\n              </div>\n            </div>\n          </div>\n        </div>\n      </ion-col>\n      <ion-col>\n        <div class="inner flashLightInner">\n          <div class="flashLight" (click)="toggleFlashLight()" [ngClass]="{\'active\': this.flashLightOn}">\n          </div>\n        </div>\n      </ion-col>\n      <ion-col>\n        <div class="balanceItem">\n          <div class="inner">\n            {{this.topPos}}\n\n            <div class="center">\n              <div class="ball" [ngStyle]="{\'top.px\': this.topPos}">\n              </div>\n            </div>\n          </div>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/meter-detail/item.html"*/
+            selector: 'page-meter-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/meter-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meter, baterka, vodováha</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div class="sideMeter">\n          <div class="inner">\n            <div class="rulers">\n              <div *ngFor="let ruler of rulers" class="ruler">\n              </div>\n            </div>\n            <div class="labels">\n              <div *ngFor="let label of labels" class="label">\n                {{label}}\n              </div>\n            </div>\n          </div>\n        </div>\n      </ion-col>\n      <ion-col>\n        <div class="inner flashLightInner">\n          <div class="flashLight" (click)="toggleFlashLight()" [ngClass]="{\'active\': this.flashLightOn}">\n          </div>\n        </div>\n      </ion-col>\n      <ion-col>\n        <div class="balanceItem">\n          <div class="inner">\n            <div class="center">\n              <div class="angle">\n                {{ this.angle }}°\n              </div>\n              <div class="ball" [ngStyle]="{\'top.px\': this.topPos}">\n                \n              </div>\n            </div>\n          </div>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/meter-detail/item.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_flashlight__["a" /* Flashlight */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_flashlight__["a" /* Flashlight */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_gyroscope__["a" /* Gyroscope */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_gyroscope__["a" /* Gyroscope */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_flashlight__["a" /* Flashlight */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_gyroscope__["a" /* Gyroscope */]])
     ], MeterDetailPage);
     return MeterDetailPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=item.js.map
 
 /***/ }),
 
-/***/ 209:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PrevodnikDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -997,9 +1177,9 @@ var PrevodnikDetailPage = (function () {
     };
     PrevodnikDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-prevodnik-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Prevodník jednotiek</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-card>\n    <ion-card-header>\n      Čo chcete prevádzať?\n    </ion-card-header>\n      <ion-card-content>\n        <form [formGroup]="formOne" (ngSubmit)="logForm()">\n          <div>\n            <ion-item>\n              <ion-label stacked>Zvoľte, ktorú veličinu chcete prevádzať</ion-label>\n              <ion-select formControlName="category" [(ngModel)]="category" interface="popover" (ionChange)="categorySelected()">\n                <ion-option *ngFor="let category of categories" [value]="category.key">\n                  {{category.name}}\n                </ion-option>\n              </ion-select>\n            </ion-item>\n          </div>\n        </form>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <ion-card-content>\n\n        <form [formGroup]="formTwo" (ngSubmit)="convert()">\n          <ion-item>\n              <ion-select formControlName="convertFrom" [(ngModel)]="convertFrom" interface="popover" (ionChange)="valueSelected()">\n                <ion-option *ngFor="let item of items" [value]="item.rate">\n                  {{item.name}}\n                </ion-option>\n              </ion-select>\n            <ion-input type="text" formControlName="convertFromVal" [(ngModel)]="convertFromVal" (input)="valueSelected()"></ion-input>\n          </ion-item>\n          <ion-item>\n              <ion-select formControlName="convertTo" [(ngModel)]="convertTo" interface="popover" (ionChange)="valueSelected()">\n                <ion-option *ngFor="let item of items" [value]="item.rate">\n                  {{item.name}}\n                </ion-option>\n              </ion-select>\n            <ion-input type="text" formControlName="convertToVal" [(ngModel)]="convertToVal" (input)="valueSelectedOposite()"></ion-input>\n          </ion-item>\n          \n          <!--<button ion-button type="submit" [disabled]="!formTwo.valid">Submit</button>-->\n        </form>\n      </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/
+            selector: 'page-prevodnik-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Prevodník jednotiek</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-card>\n    <ion-card-header>\n      Čo chcete prevádzať?\n    </ion-card-header>\n      <ion-card-content>\n        <form [formGroup]="formOne" (ngSubmit)="logForm()">\n          <div>\n            <ion-item class="select">\n              <ion-label stacked>Zvoľte, ktorú veličinu chcete prevádzať</ion-label>\n              <ion-select formControlName="category" [(ngModel)]="category" interface="popover" (ionChange)="categorySelected()">\n                <ion-option *ngFor="let category of categories" [value]="category.key">\n                  {{category.name}}\n                </ion-option>\n              </ion-select>\n            </ion-item>\n          </div>\n        </form>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <ion-card-content>\n\n        <form [formGroup]="formTwo" (ngSubmit)="convert()">\n          <ion-item class="select">\n              <ion-select formControlName="convertFrom" [(ngModel)]="convertFrom" interface="popover" (ionChange)="valueSelected()">\n                <ion-option *ngFor="let item of items" [value]="item.rate">\n                  {{item.name}}\n                </ion-option>\n              </ion-select>\n            <ion-input type="text" formControlName="convertFromVal" [(ngModel)]="convertFromVal" (input)="valueSelected()"></ion-input>\n          </ion-item>\n          <ion-item class="select">\n              <ion-select formControlName="convertTo" [(ngModel)]="convertTo" interface="popover" (ionChange)="valueSelected()">\n                <ion-option *ngFor="let item of items" [value]="item.rate">\n                  {{item.name}}\n                </ion-option>\n              </ion-select>\n            <ion-input type="text" formControlName="convertToVal" [(ngModel)]="convertToVal" (input)="valueSelectedOposite()"></ion-input>\n          </ion-item>\n          \n          <!--<button ion-button type="submit" [disabled]="!formTwo.valid">Submit</button>-->\n        </form>\n      </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/prevodnik-detail/item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
     ], PrevodnikDetailPage);
     return PrevodnikDetailPage;
 }());
@@ -1008,13 +1188,14 @@ var PrevodnikDetailPage = (function () {
 
 /***/ }),
 
-/***/ 210:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VzdialenostDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__ = __webpack_require__(217);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1026,18 +1207,81 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var VzdialenostDetailPage = (function () {
-    function VzdialenostDetailPage(navCtrl, navParams) {
+    function VzdialenostDetailPage(navCtrl, navParams, geolocation) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.geolocation = geolocation;
+        this.step = 1;
     }
     VzdialenostDetailPage.prototype.ionViewDidLoad = function () {
     };
+    VzdialenostDetailPage.prototype.startTracker = function () {
+        var _this = this;
+        //this.startCoords = this.getLocData();
+        this.geolocation.getCurrentPosition().then(function (resp) {
+            _this.startCoordsLat = resp.coords.latitude;
+            _this.startCoordsLong = resp.coords.longitude;
+            _this.step = 2;
+        }).catch(function (error) {
+            console.log('Error getting location', error);
+        });
+    };
+    VzdialenostDetailPage.prototype.endTracker = function () {
+        var _this = this;
+        this.geolocation.getCurrentPosition().then(function (resp) {
+            _this.endCoordsLat = resp.coords.latitude;
+            _this.endCoordsLong = resp.coords.longitude;
+            _this.distance = _this.getDistanceFromLatLonInKm(_this.startCoordsLat, _this.startCoordsLong, _this.endCoordsLat, _this.endCoordsLong);
+            _this.step = 3;
+        }).catch(function (error) {
+            console.log('Error getting location', error);
+        });
+    };
+    VzdialenostDetailPage.prototype.resetTracker = function () {
+        this.startCoordsLat = '';
+        this.startCoordsLong = '';
+        this.endCoordsLat = '';
+        this.endCoordsLong = '';
+        this.distance = 0;
+        this.step = 1;
+    };
+    VzdialenostDetailPage.prototype.getDistanceFromLatLonInKm = function (lat1, lon1, lat2, lon2) {
+        var R = 6371000; // Radius of the earth in km
+        var dLat = this.deg2rad(lat2 - lat1);
+        var dLon = this.deg2rad(lon2 - lon1);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = Math.round(R * c * 10) / 10;
+        return d;
+    };
+    VzdialenostDetailPage.prototype.deg2rad = function (deg) {
+        return deg * (Math.PI / 180);
+    };
+    VzdialenostDetailPage.prototype.getLocData = function () {
+        this.geolocation.getCurrentPosition().then(function (resp) {
+            console.log(resp.coords.latitude);
+        }).catch(function (error) {
+            console.log('Error getting location', error);
+        });
+        /*
+            let watch = this.geolocation.watchPosition();
+            watch.subscribe((data) => {
+             // data can be a set of coordinates, or an error (if an error occurred).
+             // data.coords.latitude
+             // data.coords.longitude
+            });
+        
+            */
+    };
     VzdialenostDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-vzdialenost-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vzdialenost-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meranie vzdialenosti</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div class="hours">\n          <h1 class="title">Kedy máme otvorené</h1>\n          <ion-grid>\n            <ion-row>\n              <ion-col>\n              </ion-col>\n              <ion-col>\n                <b>Sadrokartóny</b>\n              </ion-col>\n              <ion-col>\n                <b>Stavebniny</b>\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Pondelok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Utorok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Streda\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Štvrtok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Piatok\n              </ion-col>\n              <ion-col>\n                07:00 - 17:00\n              </ion-col>\n              <ion-col>\n                07:00 - 15:30\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Sobota\n              </ion-col>\n              <ion-col>\n                07:00 - 13:00\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n                Nedeľa\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n              <ion-col>\n                zatvorené\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vzdialenost-detail/item.html"*/
+            selector: 'page-vzdialenost-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vzdialenost-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meranie vzdialenosti</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <div padding><h2>Zmerajte vzdialenosť dvoch bodov</h2></div>\n  <ion-card padding>\n\n    \n    <div *ngIf=" step != 1 " class="positions">\n      <h3>Začiatočná pozícia</h3>\n      LAT: {{ startCoordsLat }}<br>\n      LONG: {{ startCoordsLong }}\n    </div>\n    <div *ngIf=" step == 3 " class="positions">\n      <h3>Konečná pozícia</h3>\n      LAT: {{ endCoordsLat }}<br>\n      LONG: {{ endCoordsLong }}\n    </div>\n    <div *ngIf=" step == 3 " class="positions">\n      <h3>Vzdialenosť</h3>\n      {{ distance }} m\n    </div>\n    <div></div>\n    <button ion-button (click)="startTracker()" *ngIf=" step == 1 ">Označiť začiatok</button>\n    <button ion-button (click)="endTracker()" *ngIf=" step == 2 ">Označiť koniec</button>\n    <button ion-button (click)="resetTracker()" *ngIf=" step == 3 ">Nové meranie</button>\n  </ion-card>\n  <ion-card padding margin-top>\n    Meranie vzdialenosti pomocou GPS je iba orientačné, namerané hodnoty nemusia byť presné. K meraniu je potrebný priamy GPS signál.\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/vzdialenost-detail/item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]])
     ], VzdialenostDetailPage);
     return VzdialenostDetailPage;
 }());
@@ -1046,16 +1290,15 @@ var VzdialenostDetailPage = (function () {
 
 /***/ }),
 
-/***/ 211:
+/***/ 218:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QrDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_barcode_scanner__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_toast__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_toast__ = __webpack_require__(220);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1070,12 +1313,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var QrDetailPage = (function () {
-    function QrDetailPage(navCtrl, navParams, qrScanner, barcodeScanner, toast, alertCtrl) {
+    function QrDetailPage(navCtrl, navParams, barcodeScanner, toast, alertCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.qrScanner = qrScanner;
         this.barcodeScanner = barcodeScanner;
         this.toast = toast;
         this.alertCtrl = alertCtrl;
@@ -1085,16 +1326,9 @@ var QrDetailPage = (function () {
     };
     QrDetailPage.prototype.scan = function () {
         var _this = this;
-        //this.selectedProduct = {};
         this.barcodeScanner.scan().then(function (barcodeData) {
             console.log('Barcode data', barcodeData.text);
-            //this.showResult(barcodeData);
-            /*this.toast.show(barcodeData.text, '50000', 'center').subscribe(
-              toast => {
-                console.log(toast);
-              }
-            );
-            */
+            _this.showResult(barcodeData);
         }, function (err) {
             _this.toast.show(err, '5000', 'center').subscribe(function (toast) {
                 console.log(toast);
@@ -1113,7 +1347,7 @@ var QrDetailPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-qr-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/qr-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Čítačka QR kódov</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/qr-detail/item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_barcode_scanner__["a" /* BarcodeScanner */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_toast__["a" /* Toast */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_toast__["a" /* Toast */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], QrDetailPage);
     return QrDetailPage;
 }());
@@ -1122,14 +1356,13 @@ var QrDetailPage = (function () {
 
 /***/ }),
 
-/***/ 214:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PredajnaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_maps__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1142,52 +1375,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var PredajnaPage = (function () {
     function PredajnaPage(navCtrl, navParams, platform) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.platform = platform;
-        this.platform.ready().then(function () {
-            return console.log('toast');
-        });
     }
     PredajnaPage.prototype.ionViewDidLoad = function () {
-        //this.loadMap();
-        //this.initMap();
+        this.jsMap();
     };
-    PredajnaPage.prototype.loadMap = function () {
-        console.log("map init");
-        // Create a map after the view is ready and the native platform is ready.
-        this.map = __WEBPACK_IMPORTED_MODULE_2__ionic_native_google_maps__["a" /* GoogleMaps */].create('map_canvas');
-        this.map.addMarker({
-            title: 'Gipsol - predajňa stavebnín a sadrokartónové centrum',
-            icon: 'blue',
-            animation: 'DROP',
-            position: {
-                lat: 48.1441051,
-                lng: 17.1496938
-            }
-        }).then(function (marker) {
-            marker.showInfoWindow();
+    PredajnaPage.prototype.jsMap = function () {
+        var latLng = new google.maps.LatLng(48.14378476391087, 17.148028099987513);
+        var mapOptions = {
+            center: latLng,
+            zoom: 15,
+            gestureHandling: 'cooperative',
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: this.map,
+            title: 'Gipsol Stavebniny a Sadrokartóny',
+            animation: google.maps.Animation.DROP,
         });
-    };
-    PredajnaPage.prototype.initMap = function () {
-        console.log(document.getElementById('map'));
-        this.map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8
+        var contentString = '<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h2 id="firstHeading" class="firstHeading">Gipsol, a.s.</h2>' +
+            '<div id="bodyContent">' +
+            '<p><b>Predajňa stavebnín a sadrokartónové centrum</b></p>' +
+            '<p>Mlynské nivy 56, 821 09 Bratislava</p>' +
+            '<p><a href="https://www.google.sk/maps/dir//Gipsol,+a.s.,+Mlynsk%C3%A9+nivy+56,+821+09+Bratislava/@48.1445478,17.1417274,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x476c8927c44f20c9:0x1ab38d5cc80390e5!2m2!1d17.147953!2d48.143817!3e0" target="_blank">Navigovať</a></p>' +
+            '</div>' +
+            '</div>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 200
+        });
+        marker.addListener('click', function () {
+            infowindow.open(this.map, marker);
         });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", Object)
     ], PredajnaPage.prototype, "mapElement", void 0);
     PredajnaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-predajna',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/predajna/item.html"*/'\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Predajňa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <div class="hours">\n            \n            <ion-grid>\n              <ion-row>\n                <ion-col>\n                  <h1 class="title">Kedy máme otvorené</h1>\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                </ion-col>\n                <ion-col>\n                  <b>Sadrokartóny</b>\n                </ion-col>\n                <ion-col>\n                  <b>Stavebniny</b>\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Pondelok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Utorok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Streda\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Štvrtok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Piatok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Sobota\n                </ion-col>\n                <ion-col>\n                  07:00 - 13:00\n                </ion-col>\n                <ion-col>\n                  zatvorené\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Nedeľa\n                </ion-col>\n                <ion-col>\n                  zatvorené\n                </ion-col>\n                <ion-col>\n                  zatvorené\n                </ion-col>\n              </ion-row>\n            </ion-grid>\n          </div>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col>\n          <!--<div id="map_canvas">\n            <button ion-button (click)="onButtonClick($event)">Start demo</button>\n          </div>-->\n\n          <div #map id="map"></div>\n\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/predajna/item.html"*/
+            selector: 'page-predajna',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/predajna/item.html"*/'\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Predajňa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <div class="hours">\n            \n            <ion-grid>\n              <ion-row>\n                <ion-col>\n                  <h1 class="title">Kedy máme otvorené</h1>\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                </ion-col>\n                <ion-col>\n                  <b>Sadrokartóny</b>\n                </ion-col>\n                <ion-col>\n                  <b>Stavebniny</b>\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Pondelok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Utorok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Streda\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Štvrtok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Piatok\n                </ion-col>\n                <ion-col>\n                  07:00 - 17:00\n                </ion-col>\n                <ion-col>\n                  07:00 - 15:30\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Sobota\n                </ion-col>\n                <ion-col>\n                  07:00 - 13:00\n                </ion-col>\n                <ion-col>\n                  zatvorené\n                </ion-col>\n              </ion-row>\n              <ion-row>\n                <ion-col>\n                  Nedeľa\n                </ion-col>\n                <ion-col>\n                  zatvorené\n                </ion-col>\n                <ion-col>\n                  zatvorené\n                </ion-col>\n              </ion-row>\n            </ion-grid>\n          </div>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col>\n\n\n          <div #map id="map"></div>\n\n\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/predajna/item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]])
     ], PredajnaPage);
     return PredajnaPage;
 }());
@@ -1196,13 +1435,13 @@ var PredajnaPage = (function () {
 
 /***/ }),
 
-/***/ 215:
+/***/ 222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KontaktyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1244,9 +1483,9 @@ var KontaktyPage = (function () {
     };
     KontaktyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-kontakty',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/kontakty/item.html"*/'\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Kontakty</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoFirst()">\n          <h2>Obchodné oddelenie</h2>\n          <div class="desc">cenové ponuky, technické poradenstvo</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoFirst == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type mobile">\n                mobil:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val mobile">\n                <a href="tel:+421940600891">0940/600 891</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val tel">\n                <a href="tel:+421253419284">02/5341 9284</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val mail">\n                <a href="mailto:obchod@gipsol.sk">obchod@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoSecond()">\n          <h2>Odbyt</h2>\n          <div class="desc">tovar na objednávku, revízne klapky</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoSecond == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type mobile">\n                mobil:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val mobile">\n                <a href="tel:+421940600891">0940/600 891</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val tel">\n                <a href="tel:+421253416042">02/5341 6042</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val mail">\n                <a href="mailto:gipsol@gipsol.sk">gipsol@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoThird()">\n          <h2>Stavebniny</h2>\n          <div class="desc">informácie</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoThird == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val tel">\n                <a href="tel:+421220910135">02/2091 0135</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val mail">\n                <a href="mailto:stavebniny@gipsol.sk">stavebniny@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoFourth()">\n          <h2>Ekonomický úsek</h2>\n          <div class="desc">fakturácia</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoFourth == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val tel">\n                <a href="tel:+421253419282">02/5341 9282</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-9>\n              <div class="val mail">\n                <a href="mailto:ekonomika@gipsol.sk">ekonomika@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/kontakty/item.html"*/
+            selector: 'page-kontakty',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/kontakty/item.html"*/'\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Kontakty</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoFirst()">\n          <h2>Obchodné oddelenie</h2>\n          <div class="desc">cenové ponuky, technické poradenstvo</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoFirst == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type mobile">\n                mobil:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val mobile">\n                <a href="tel:+421940600891">0940/600 891</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val tel">\n                <a href="tel:+421253419284">02/5341 9284</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val mail">\n                <a href="mailto:obchod@gipsol.sk">obchod@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoSecond()">\n          <h2>Odbyt</h2>\n          <div class="desc">tovar na objednávku, revízne klapky</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoSecond == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type mobile">\n                mobil:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val mobile">\n                <a href="tel:+421940600891">0940/600 891</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val tel">\n                <a href="tel:+421253416042">02/5341 6042</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val mail">\n                <a href="mailto:gipsol@gipsol.sk">gipsol@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoThird()">\n          <h2>Stavebniny</h2>\n          <div class="desc">informácie</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoThird == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val tel">\n                <a href="tel:+421220910135">02/2091 0135</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val mail">\n                <a href="mailto:stavebniny@gipsol.sk">stavebniny@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-row class="rootRow">\n      <ion-col>\n        <div class="rowToggle" (click)="showRowInfoFourth()">\n          <h2>Ekonomický úsek</h2>\n          <div class="desc">fakturácia</div>\n        </div>\n        <div class="rowInfo" *ngIf="showInfoFourth == true">\n          <div class="hodiny">počas pracovných dní od 07:00 do 15:30</div>\n          <ion-row>\n            <ion-col>\n              <div class="type tel">\n                tel./fax.:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val tel">\n                <a href="tel:+421253419282">02/5341 9282</a>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class="type mail">\n                e-mail:\n              </div>\n            </ion-col>\n            <ion-col col-8>\n              <div class="val mail">\n                <a href="mailto:ekonomika@gipsol.sk">ekonomika@gipsol.sk</a>\n              </div>\n            </ion-col>\n          </ion-row>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/kontakty/item.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]])
     ], KontaktyPage);
     return KontaktyPage;
 }());
@@ -1255,13 +1494,13 @@ var KontaktyPage = (function () {
 
 /***/ }),
 
-/***/ 216:
+/***/ 224:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NastrojeDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1293,7 +1532,7 @@ var NastrojeDetailPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-nastroje-detail',template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje-detail/item.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{nazov}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <ion-slides pager>\n\n    <ion-slide *ngFor="let slide of slides">\n      <img src="/assets/imgs/{{slide.image}}">\n      <p class="slide-title">{{slide.text}}</p>\n    </ion-slide>\n\n  </ion-slides>\n\n</ion-content>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/pages/nastroje-detail/item.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], NastrojeDetailPage);
     return NastrojeDetailPage;
 }());
@@ -1302,14 +1541,14 @@ var NastrojeDetailPage = (function () {
 
 /***/ }),
 
-/***/ 217:
+/***/ 225:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(226);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_module__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_module__ = __webpack_require__(247);
 
 
 
@@ -1319,42 +1558,55 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 239:
+/***/ 247:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(286);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_vypocty_list__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_vypocty_detail_vypocty_detail__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_postupy_list__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_postupy_detail_postupy_detail__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_nastroje_list__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_detail_item__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_meter_detail_item__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_prevodnik_detail_item__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_vzdialenost_detail_item__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_qr_detail_item__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_predajna_item__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_kontakty_item__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__directives_background_image_background_image__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_status_bar__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_splash_screen__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_barcode_scanner__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_toast__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_flashlight__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_gyroscope__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_letaky_list__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_vypocty_list__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_vypocty_detail_vypocty_detail__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_postupy_list__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_postupy_detail_postupy_detail__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_list__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_nastroje_detail_item__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_meter_detail_item__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_prevodnik_detail_item__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_vzdialenost_detail_item__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_qr_detail_item__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_predajna_item__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_kontakty_item__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__directives_background_image_background_image__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_barcode_scanner__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_toast__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_flashlight__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_gyroscope__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_geolocation__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__ionic_native_http__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_ionic_native_http_connection_backend__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_ionic_gallery_modal__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
+
+
 
 
 
@@ -1388,57 +1640,70 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_6__pages_vypocty_list__["a" /* VypoctyPage */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_vypocty_detail_vypocty_detail__["a" /* VypoctyDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_8__pages_postupy_list__["a" /* PostupyPage */],
-                __WEBPACK_IMPORTED_MODULE_9__pages_postupy_detail_postupy_detail__["a" /* PostupyDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_10__pages_nastroje_list__["a" /* NastrojePage */],
-                __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_detail_item__["a" /* NastrojeDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_meter_detail_item__["a" /* MeterDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_prevodnik_detail_item__["a" /* PrevodnikDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_vzdialenost_detail_item__["a" /* VzdialenostDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_qr_detail_item__["a" /* QrDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_predajna_item__["a" /* PredajnaPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_kontakty_item__["a" /* KontaktyPage */],
-                __WEBPACK_IMPORTED_MODULE_18__directives_background_image_background_image__["a" /* BackgroundImageDirective */]
+                __WEBPACK_IMPORTED_MODULE_6__pages_letaky_list__["a" /* LetakyPage */],
+                __WEBPACK_IMPORTED_MODULE_7__pages_vypocty_list__["a" /* VypoctyPage */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_vypocty_detail_vypocty_detail__["a" /* VypoctyDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_postupy_list__["a" /* PostupyPage */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_postupy_detail_postupy_detail__["a" /* PostupyDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_list__["a" /* NastrojePage */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_nastroje_detail_item__["a" /* NastrojeDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_meter_detail_item__["a" /* MeterDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_prevodnik_detail_item__["a" /* PrevodnikDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_vzdialenost_detail_item__["a" /* VzdialenostDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_qr_detail_item__["a" /* QrDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_predajna_item__["a" /* PredajnaPage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_kontakty_item__["a" /* KontaktyPage */],
+                __WEBPACK_IMPORTED_MODULE_19__directives_background_image_background_image__["a" /* BackgroundImageDirective */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/nastroje-detail/item.module#NastrojeDetailPageModule', name: 'NastrojeDetailPage', segment: 'item', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/postupy-detail/postupy-detail.module#PostupyDetailPageModule', name: 'PostupyDetailPage', segment: 'postupy-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vypocty-detail/vypocty-detail.module#VypoctyDetailPageModule', name: 'VypoctyDetailPage', segment: 'vypocty-detail', priority: 'low', defaultHistory: [] }
                     ]
                 }),
-                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */]
+                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_29_ionic_gallery_modal__["c" /* GalleryModalModule */], __WEBPACK_IMPORTED_MODULE_28_ionic_native_http_connection_backend__["c" /* NativeHttpModule */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_6__pages_vypocty_list__["a" /* VypoctyPage */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_vypocty_detail_vypocty_detail__["a" /* VypoctyDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_8__pages_postupy_list__["a" /* PostupyPage */],
-                __WEBPACK_IMPORTED_MODULE_9__pages_postupy_detail_postupy_detail__["a" /* PostupyDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_10__pages_nastroje_list__["a" /* NastrojePage */],
-                __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_detail_item__["a" /* NastrojeDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_meter_detail_item__["a" /* MeterDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_prevodnik_detail_item__["a" /* PrevodnikDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_vzdialenost_detail_item__["a" /* VzdialenostDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_qr_detail_item__["a" /* QrDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_predajna_item__["a" /* PredajnaPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_kontakty_item__["a" /* KontaktyPage */]
+                __WEBPACK_IMPORTED_MODULE_6__pages_letaky_list__["a" /* LetakyPage */],
+                __WEBPACK_IMPORTED_MODULE_7__pages_vypocty_list__["a" /* VypoctyPage */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_vypocty_detail_vypocty_detail__["a" /* VypoctyDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_postupy_list__["a" /* PostupyPage */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_postupy_detail_postupy_detail__["a" /* PostupyDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_11__pages_nastroje_list__["a" /* NastrojePage */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_nastroje_detail_item__["a" /* NastrojeDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_meter_detail_item__["a" /* MeterDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_prevodnik_detail_item__["a" /* PrevodnikDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_vzdialenost_detail_item__["a" /* VzdialenostDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_qr_detail_item__["a" /* QrDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_predajna_item__["a" /* PredajnaPage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_kontakty_item__["a" /* KontaktyPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_19__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_20__ionic_native_splash_screen__["a" /* SplashScreen */],
-                __WEBPACK_IMPORTED_MODULE_21__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
-                __WEBPACK_IMPORTED_MODULE_22__ionic_native_toast__["a" /* Toast */],
-                __WEBPACK_IMPORTED_MODULE_23__ionic_native_flashlight__["a" /* Flashlight */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_24__ionic_native_gyroscope__["a" /* Gyroscope */],
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] }
+                __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_22__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
+                __WEBPACK_IMPORTED_MODULE_23__ionic_native_toast__["a" /* Toast */],
+                __WEBPACK_IMPORTED_MODULE_24__ionic_native_flashlight__["a" /* Flashlight */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_25__ionic_native_gyroscope__["a" /* Gyroscope */],
+                __WEBPACK_IMPORTED_MODULE_26__ionic_native_geolocation__["a" /* Geolocation */],
+                __WEBPACK_IMPORTED_MODULE_27__ionic_native_http__["a" /* HTTP */],
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicErrorHandler */] },
+                {
+                    provide: __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["d" /* HAMMER_GESTURE_CONFIG */],
+                    useClass: __WEBPACK_IMPORTED_MODULE_29_ionic_gallery_modal__["b" /* GalleryModalHammerConfig */]
+                },
+                {
+                    provide: __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpBackend */], useClass: __WEBPACK_IMPORTED_MODULE_28_ionic_native_http_connection_backend__["b" /* NativeHttpFallback */],
+                    deps: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_28_ionic_native_http_connection_backend__["a" /* NativeHttpBackend */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["g" /* HttpXhrBackend */]]
+                }
             ]
         })
     ], AppModule);
@@ -1449,21 +1714,74 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 286:
+/***/ 271:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EmailService = (function () {
+    function EmailService(http) {
+        this.http = http;
+        this.apiUrl = 'https://api.pepipost.com/v2/sendEmail';
+    }
+    EmailService.prototype.sendCalucation = function (data) {
+        var _this = this;
+        var httpOptions = {
+            headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["e" /* HttpHeaders */]({
+                'api_key': 'fc3d56d96927c3bcfdc954acdca354ad',
+                'content-type': 'application/json'
+            })
+        };
+        return new Promise(function (resolve) {
+            _this.http.post(_this.apiUrl, data, httpOptions)
+                .subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                console.log(data);
+                console.log(err);
+            });
+        });
+    };
+    EmailService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
+    ], EmailService);
+    return EmailService;
+}());
+
+//# sourceMappingURL=email-service.js.map
+
+/***/ }),
+
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_vypocty_list__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_postupy_list__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_nastroje_list__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_predajna_item__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_kontakty_item__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_letaky_list__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_vypocty_list__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_postupy_list__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_nastroje_list__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_predajna_item__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_kontakty_item__ = __webpack_require__(222);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1483,6 +1801,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen) {
         this.platform = platform;
@@ -1491,13 +1810,13 @@ var MyApp = (function () {
         this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
         this.initializeApp();
         this.pages = [
-            { title: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */], icon: 'home.png' },
-            { title: 'Akciové letáky', component: __WEBPACK_IMPORTED_MODULE_6__pages_postupy_list__["a" /* PostupyPage */], icon: 'news.png' },
-            { title: 'Pracovné postupy', component: __WEBPACK_IMPORTED_MODULE_6__pages_postupy_list__["a" /* PostupyPage */], icon: 'procedures.png' },
-            { title: 'Výpočet spotreby materiálu', component: __WEBPACK_IMPORTED_MODULE_5__pages_vypocty_list__["a" /* VypoctyPage */], icon: 'calc.png' },
-            { title: 'Nástroje', component: __WEBPACK_IMPORTED_MODULE_7__pages_nastroje_list__["a" /* NastrojePage */], icon: 'tools.png' },
-            { title: 'Predajňa', component: __WEBPACK_IMPORTED_MODULE_8__pages_predajna_item__["a" /* PredajnaPage */], icon: 'store.png' },
-            { title: 'Kontakty', component: __WEBPACK_IMPORTED_MODULE_9__pages_kontakty_item__["a" /* KontaktyPage */], icon: 'contacts.png' }
+            { title: 'Úvod', component: __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */], icon: 'home.png' },
+            { title: 'Akciové letáky', component: __WEBPACK_IMPORTED_MODULE_5__pages_letaky_list__["a" /* LetakyPage */], icon: 'news.png' },
+            { title: 'Pracovné postupy', component: __WEBPACK_IMPORTED_MODULE_7__pages_postupy_list__["a" /* PostupyPage */], icon: 'procedures.png' },
+            { title: 'Výpočet spotreby materiálu', component: __WEBPACK_IMPORTED_MODULE_6__pages_vypocty_list__["a" /* VypoctyPage */], icon: 'calc.png' },
+            { title: 'Nástroje', component: __WEBPACK_IMPORTED_MODULE_8__pages_nastroje_list__["a" /* NastrojePage */], icon: 'tools.png' },
+            { title: 'Predajňa', component: __WEBPACK_IMPORTED_MODULE_9__pages_predajna_item__["a" /* PredajnaPage */], icon: 'store.png' },
+            { title: 'Kontakty', component: __WEBPACK_IMPORTED_MODULE_10__pages_kontakty_item__["a" /* KontaktyPage */], icon: 'contacts.png' }
         ];
         this.links = [
             { title: 'Web', link: 'https://www.gipsol.sk', icon: 'ic_web.png' },
@@ -1512,7 +1831,6 @@ var MyApp = (function () {
             // Here you can do any higher level native things you might need.
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
-            //this.gyroNorm = new GyroNorm();
         });
     };
     MyApp.prototype.openPage = function (page) {
@@ -1521,13 +1839,13 @@ var MyApp = (function () {
         this.nav.setRoot(page.component);
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <img class="logo" alt="logo" height="40" src="assets/imgs/icons/ic_logo_white_long.png" >\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <a menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        <img alt="{{p.title}}" height="20" src="assets/imgs/icons/nav/{{p.icon}}">\n        {{p.title}}\n      </a>\n    </ion-list>\n    <ion-list class="bottomPos">\n      <div *ngFor="let l of links">\n        <a ion-item href="{{l.link}}" target="_blank">\n          <img alt="{{l.title}}" height="20" src="assets/imgs/icons/{{l.icon}}">\n          {{l.title}}\n        </a>\n      </div>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Applications/MAMP_2018-05-04_13-30-01/htdocs/g-app/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
@@ -1536,12 +1854,108 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 294:
+/***/ 303:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NamesService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NamesService = (function () {
+    function NamesService(http) {
+        this.http = http;
+        this.apiUrl = './assets/json/names.json';
+    }
+    NamesService.prototype.getNames = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
+    NamesService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
+    ], NamesService);
+    return NamesService;
+}());
+
+//# sourceMappingURL=names-service.js.map
+
+/***/ }),
+
+/***/ 304:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VypoctyService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/*
+  Generated class for the VypoctyServiceProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var VypoctyService = (function () {
+    function VypoctyService(http) {
+        this.http = http;
+        //apiUrl = 'http://127.0.0.1:8000';
+        this.apiUrl = './assets/json/vypocty.json';
+        //console.log('Hello PostupyService Provider');
+    }
+    VypoctyService.prototype.getVypocty = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
+    VypoctyService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
+    ], VypoctyService);
+    return VypoctyService;
+}());
+
+//# sourceMappingURL=vypocty-service.js.map
+
+/***/ }),
+
+/***/ 305:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostupyService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1579,7 +1993,7 @@ var PostupyService = (function () {
     };
     PostupyService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
     ], PostupyService);
     return PostupyService;
 }());
@@ -1588,7 +2002,7 @@ var PostupyService = (function () {
 
 /***/ }),
 
-/***/ 298:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1626,5 +2040,5 @@ var BackgroundImageDirective = (function () {
 
 /***/ })
 
-},[217]);
+},[225]);
 //# sourceMappingURL=main.js.map
